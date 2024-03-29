@@ -14,7 +14,7 @@ add_events <- function(data, year, month, palette) {
     
     ## Add color to data ----
     
-    categories <- unique(data$"categories")
+    categories <- unique(data$"category")
     
     if (length(palette) > 1) {
       

@@ -3,6 +3,7 @@
 export(filter_events)
 export(get_calendar)
 export(number_of_days)
+export(plot_calendar)
 importFrom(grDevices,dev.off)
 importFrom(grDevices,pdf)
 importFrom(graphics,mtext)
