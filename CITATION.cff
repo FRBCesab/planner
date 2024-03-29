@@ -7,8 +7,8 @@ cff-version: 1.2.0
 message: 'To cite package "calendar" in publications use:'
 type: software
 license: GPL-2.0-or-later
-title: 'calendar: Create a Monthly Calendar'
-version: 0.0.0.9999
+title: 'calendar: Create a Monthly Calendar with Events'
+version: 0.0.0.9000
 abstract: Plots and exports a monthly calendar as 'pdf'. Holidays (France only) are
   identified. User can easily add events (up to four by day) and choose between of
   a week of five days (working week) or a full week (weekend included).
@@ -33,24 +33,3 @@ contact:
   given-names: Nicolas
   email: nicolas.casajus@fondationbiodiversite.fr
   orcid: https://orcid.org/0000-0002-5537-5294
-references:
-- type: software
-  title: graphics
-  abstract: 'R: A Language and Environment for Statistical Computing'
-  notes: Imports
-  authors:
-  - name: R Core Team
-  institution:
-    name: R Foundation for Statistical Computing
-    address: Vienna, Austria
-  year: '2024'
-- type: software
-  title: grDevices
-  abstract: 'R: A Language and Environment for Statistical Computing'
-  notes: Imports
-  authors:
-  - name: R Core Team
-  institution:
-    name: R Foundation for Statistical Computing
-    address: Vienna, Austria
-  year: '2024'
