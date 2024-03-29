@@ -47,10 +47,14 @@ The R package `calendar` is dedicated to create a monthly calendar. It plots and
   <figcaption>Simple monthly calendar</figcaption>
 </figure>
 
+<br/>
+
 <figure>
   <img src="man/figures/calendar-demo-2.png" alt="">
   <figcaption>Simple monthly calendar with weekends</figcaption>
 </figure>
+
+<br/>
 
 <figure>
   <img src="man/figures/calendar-demo-3.png" alt="">
