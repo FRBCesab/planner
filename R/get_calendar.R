@@ -5,7 +5,10 @@
 #'   
 #' @param month either an `integer` or a `character` of length 1. Must have 1 
 #'   or 2 characters (e.g. '01' or '1'). Default is the current month.
-#'
+#'   
+#' @param weekend a `logical`. If `TRUE` keeps Saturdays and Sundays. Default is
+#'   `FALSE`.
+#'   
 #' @return A `data.frame` with the following columns:
 #' - `date`: the date of the day (`YYYY-MM-DD`),
 #' - `year`: the year of the day (`integer`),
@@ -33,7 +36,7 @@
 #' head(get_calendar(year = 1970, month = 1))
 
 get_calendar <- function(year = format(Sys.Date(), "%Y"), 
-                         month = format(Sys.Date(), "%m")) {
+                         month = format(Sys.Date(), "%m"), weekend = FALSE) {
   
   ## Check args ----
   
@@ -97,6 +100,13 @@ get_calendar <- function(year = format(Sys.Date(), "%Y"),
   ## Add position on x-axis (day of the week) ----
   
   calendar <- merge(calendar, weekdays(), by = "weekday", all = TRUE)
+  
+  
+  ## Remove weekend (if required) ----
+  
+  if (!weekend) {
+    calendar <- calendar[!(calendar$"weekday" %in% c("Saturday", "Sunday")), ]  
+  }
   
   
   ## Add position on y-axis (week of the month) ----

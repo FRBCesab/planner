@@ -3,7 +3,7 @@
 
 # Imports: start ---- 
 #' @importFrom grDevices dev.off pdf
-#' @importFrom graphics par rect text
+#' @importFrom graphics mtext par rect text
 # Imports: end ----
 
 NULL

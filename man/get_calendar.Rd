@@ -6,7 +6,8 @@
 \usage{
 get_calendar(
   year = format(Sys.Date(), "\%Y"),
-  month = format(Sys.Date(), "\%m")
+  month = format(Sys.Date(), "\%m"),
+  weekend = FALSE
 )
 }
 \arguments{
@@ -15,6 +16,9 @@ characters (e.g. '2024' and not '24'). Default is the current year.}
 
 \item{month}{either an \code{integer} or a \code{character} of length 1. Must have 1
 or 2 characters (e.g. '01' or '1'). Default is the current month.}
+
+\item{weekend}{a \code{logical}. If \code{TRUE} keeps Saturdays and Sundays. Default is
+\code{FALSE}.}
 }
 \value{
 A \code{data.frame} with the following columns:
