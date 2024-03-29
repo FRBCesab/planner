@@ -14,24 +14,23 @@ Check](https://github.com/frbcesab/calendar/actions/workflows/R-CMD-check.yaml/b
 
 <p align="left">
 • <a href="#overview">Overview</a><br> •
-<a href="#features">Features</a><br> •
 <a href="#installation">Installation</a><br> •
 <a href="#get-started">Get started</a><br> •
-<a href="#long-form-documentations">Long-form documentations</a><br> •
 <a href="#citation">Citation</a><br> •
 <a href="#contributing">Contributing</a><br> •
-<a href="#acknowledgments">Acknowledgments</a><br> •
-<a href="#references">References</a>
+<a href="#acknowledgments">Acknowledgments</a>
 </p>
 
 ## Overview
 
-The R package `calendar`… **{{ DESCRIBE YOUR PACKAGE }}**
+The R package `calendar` is dedicated to create a monthly calendar. It
+plots and exports the calendar as a `pdf` file (ready to print in the A4
+paper format). Holidays (only France is supported yet) are identified
+and user can easily add events (up to four by day). User can also choose
+between of a week of five days (working week) or a full week (weekend
+included).
 
-## Features
-
-The main purpose of `calendar` is to… **{{ DESCRIBE THE MAIN FEATURES
-}}**
+![](man/figures/calendar-2024-04.pdf)
 
 ## Installation
 
@@ -59,16 +58,6 @@ library("calendar")
 For an overview of the main features of `calendar`, please read the [Get
 started](https://frbcesab.github.io/calendar/articles/calendar.html)
 vignette.
-
-## Long-form documentations
-
-`calendar` provides **{{ NUMBER OF VIGNETTES }}** vignettes to learn
-more about the package:
-
-- the [Get
-  started](https://frbcesab.github.io/calendar/articles/calendar.html)
-  vignette describes the core features of the package
-- **{{ LIST ADDITIONAL VIGNETTES }}**
 
 ## Citation
 

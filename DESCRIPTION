@@ -1,6 +1,6 @@
 Package: calendar
 Type: Package
-Title: Create a Monthly Calendar
+Title: Create a Monthly Calendar with Events
 Version: 0.0.0.9000
 Authors@R: c(
     person(given   = "Nicolas",
