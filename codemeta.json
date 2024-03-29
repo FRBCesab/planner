@@ -3,11 +3,11 @@
   "@type": "SoftwareSourceCode",
   "identifier": "calendar",
   "description": "Plots and exports a monthly calendar as 'pdf'. Holidays (France only) are identified. User can easily add events (up to four by day) and choose between of a week of five days (working week) or a full week (weekend included).",
-  "name": "calendar: Create a Monthly Calendar",
+  "name": "calendar: Create a Monthly Calendar with Events",
   "codeRepository": "https://github.com/frbcesab/calendar",
   "issueTracker": "https://github.com/frbcesab/calendar/issues",
   "license": "https://spdx.org/licenses/GPL-2.0",
-  "version": "0.0.0.9999",
+  "version": "0.0.0.9000",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -60,7 +60,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "34.439KB",
+  "fileSize": "239.941KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
@@ -77,6 +77,6 @@
     }
   ],
   "releaseNotes": "https://github.com/frbcesab/calendar/blob/master/NEWS.md",
-  "contIntegration": ["https://github.com/frbcesab/calendar/actions/workflows/R-CMD-check.yaml", "https://github.com/frbcesab/calendar/actions/workflows/pkgdown.yaml"],
-  "relatedLink": "https://CRAN.R-project.org/package=calendar"
+  "readme": "https://github.com/FRBCesab/calendar/blob/main/README.md",
+  "contIntegration": ["https://github.com/frbcesab/calendar/actions/workflows/R-CMD-check.yaml", "https://github.com/frbcesab/calendar/actions/workflows/pkgdown.yaml"]
 }
