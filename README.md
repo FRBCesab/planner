@@ -30,24 +30,21 @@ and user can easily add events (up to four by day). User can also choose
 between of a week of five days (working week) or a full week (weekend
 included).
 
-<figure>
-<img src="man/figures/calendar-demo-1.png" alt="">
-<figcaption>
-Simple monthly calendar
-</figcaption>
-</figure>
-<figure>
-<img src="man/figures/calendar-demo-2.png" alt="">
-<figcaption>
-Simple monthly calendar with weekends
-</figcaption>
-</figure>
-<figure>
-<img src="man/figures/calendar-demo-3.png" alt="">
-<figcaption>
-Simple monthly calendar with events
-</figcaption>
-</figure>
+- Simple monthly calendar with weekends
+
+![](man/figures/calendar-demo-2.png)
+
+<br/>
+
+- Simple monthly calendar without weekends
+
+![](man/figures/calendar-demo-1.png)
+
+<br/>
+
+- Simple monthly calendar with events
+
+![](man/figures/calendar-demo-3.png)
 
 ## Installation
 
