@@ -1,0 +1,20 @@
+Package: calendar
+Type: Package
+Title: Create a Monthly Calendar
+Version: 0.0.0.9000
+Authors@R: c(
+    person(given   = "Nicolas",
+           family  = "Casajus",
+           role    = c("aut", "cre", "cph"),
+           email   = "nicolas.casajus@fondationbiodiversite.fr",
+           comment = c(ORCID = "0000-0002-5537-5294")))
+Description: Plots and exports a monthly calendar as 'pdf'. Holidays (France 
+    only) are identified. User can easily add events (up to four by day) and 
+    choose between of a week of five days (working week) or a full week
+    (weekend included).
+URL: https://github.com/frbcesab/calendar
+BugReports: https://github.com/frbcesab/calendar/issues
+License: GPL (>= 2)
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.1

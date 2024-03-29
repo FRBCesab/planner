@@ -1,0 +1,13 @@
+^LICENSE\.md$
+^.*\.Rproj$
+^\.Rproj\.user$
+^CODE_OF_CONDUCT\.md$
+^CONTRIBUTING\.md$
+^\.github$
+^CITATION\.cff$
+^_pkgdown\.yaml$
+^cran-comments\.md$
+^codemeta\.json$
+^CRAN-SUBMISSION$
+^README\.Rmd$
+^README\.html$
