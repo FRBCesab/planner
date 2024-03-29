@@ -5,8 +5,6 @@
 
 <!-- badges: start -->
 
-[![CRAN
-status](https://www.r-pkg.org/badges/version/calendar)](https://CRAN.R-project.org/package=calendar)
 [![R CMD
 Check](https://github.com/frbcesab/calendar/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/frbcesab/calendar/actions/workflows/R-CMD-check.yaml)
 [![Website](https://github.com/frbcesab/calendar/actions/workflows/pkgdown.yaml/badge.svg)](https://github.com/frbcesab/calendar/actions/workflows/pkgdown.yaml)

@@ -18,7 +18,6 @@ calendar <img src="man/figures/logo.png" align="right" style="float:right; heigh
 =========================================================
 
 <!-- badges: start -->
-[![CRAN status](https://www.r-pkg.org/badges/version/calendar)](https://CRAN.R-project.org/package=calendar)
 [![R CMD Check](https://github.com/frbcesab/calendar/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/frbcesab/calendar/actions/workflows/R-CMD-check.yaml)
 [![Website](https://github.com/frbcesab/calendar/actions/workflows/pkgdown.yaml/badge.svg)](https://github.com/frbcesab/calendar/actions/workflows/pkgdown.yaml)
 [![License: GPL (>= 2)](https://img.shields.io/badge/License-GPL%20%28%3E%3D%202%29-blue.svg)](https://choosealicense.com/licenses/gpl-2.0/)
