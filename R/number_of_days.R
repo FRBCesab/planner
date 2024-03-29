@@ -45,7 +45,7 @@ number_of_days <- function(date, format = "%Y-%m-%d") {
          "characters (e.g. 01), and day 2 characters (e.g. 01)", call. = FALSE)
   }
   
-  if (is.character(date)) {
+  if (!inherits(date, "Date")) {
     date <- as.Date(date, format = format)
   }
   
