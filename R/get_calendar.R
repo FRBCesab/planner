@@ -63,7 +63,7 @@ get_calendar <- function(year = format(Sys.Date(), "%Y"),
   }
   
   if (nchar(month) != 2) {
-    stop("Argument 'month' must be of the form 'MM' (e.g. '01' instead of '1')",
+    stop("Argument 'month' must be of the form 'MM' or 'M' (e.g. '01' or '1')",
          call. = FALSE)
   }
   
