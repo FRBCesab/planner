@@ -6,6 +6,8 @@
 \alias{calendar-package}
 \title{calendar: Create a Monthly Calendar}
 \description{
+\if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
+
 Plots and exports a monthly calendar as 'pdf'. Holidays (France only) are identified. User can easily add events (up to four by day) and choose between of a week of five days (working week) or a full week (weekend included).
 }
 \seealso{
