@@ -137,14 +137,11 @@ filter_events <- function(data, year = format(Sys.Date(), "%Y"),
   }
   
   
-  ## Order events by category (need to be improved) ----
+  ## Order events by category ----
   
   if (nrow(events) > 0) {
-    
-    events$"order" <- ifelse(events$"category" == "Course", 1,
-                             ifelse(events$"category" == "Group", 2, 3))
-    
-    events <- events[with(events, order(from, order, event)), ]
+
+    events <- events[with(events, order(from, to, event)), ]
     
     rownames(events) <- NULL
   }
