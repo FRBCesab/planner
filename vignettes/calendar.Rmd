@@ -1,0 +1,18 @@
+---
+title: "Get started"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Get started}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r include=FALSE}
+knitr::opts_chunk$set(collapse  = TRUE,
+                      comment   = "#>",
+                      out.width = "100%",
+                      dpi       = 96,
+                      fig.align = "center")
+```
+
+Coming soon...
