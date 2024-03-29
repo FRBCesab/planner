@@ -30,7 +30,7 @@ and user can easily add events (up to four by day). User can also choose
 between of a week of five days (working week) or a full week (weekend
 included).
 
-![](man/figures/calendar-2024-04.pdf)
+![](man/figures/calendar-2024-04.png)
 
 ## Installation
 
