@@ -4,7 +4,7 @@
 \name{calendar-package}
 \alias{calendar}
 \alias{calendar-package}
-\title{calendar: Create a Monthly Calendar}
+\title{calendar: Create a Monthly Calendar with Events}
 \description{
 \if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
