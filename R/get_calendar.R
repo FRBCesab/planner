@@ -3,8 +3,8 @@
 #' @param year either an `integer` or a `character` of length 1. Must have 4 
 #'   characters (e.g. '2024' and not '24'). Default is the current year.
 #'   
-#' @param month either an `integer` or a `character` of length 1. Must have 2
-#'   characters (e.g. '01' and not '1'). Default is the current month.
+#' @param month either an `integer` or a `character` of length 1. Must have 1 
+#'   or 2 characters (e.g. '01' or '1'). Default is the current month.
 #'
 #' @return A `data.frame` with the following columns:
 #' - `date`: the date of the day (`YYYY-MM-DD`),
@@ -27,10 +27,10 @@
 #' head(get_calendar(month = 12))
 #' 
 #' ## Calendar for April (current year) ----
-#' head(get_calendar(month = "04"))
+#' head(get_calendar(month = 4))
 #' 
 #' ## Calendar for January 1970 ----
-#' head(get_calendar(year = 1970, month = "01"))
+#' head(get_calendar(year = 1970, month = 1))
 
 get_calendar <- function(year = format(Sys.Date(), "%Y"), 
                          month = format(Sys.Date(), "%m")) {
@@ -58,11 +58,14 @@ get_calendar <- function(year = format(Sys.Date(), "%Y"),
     stop("Argument 'month' must be of length 1", call. = FALSE)
   }
   
+  if (nchar(month) == 1) {
+    month <- paste0("0", month)
+  }
+  
   if (nchar(month) != 2) {
     stop("Argument 'month' must be of the form 'MM' (e.g. '01' instead of '1')",
          call. = FALSE)
   }
-  
   
   ## Switch to US locale ----
   

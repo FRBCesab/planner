@@ -13,8 +13,8 @@ get_calendar(
 \item{year}{either an \code{integer} or a \code{character} of length 1. Must have 4
 characters (e.g. '2024' and not '24'). Default is the current year.}
 
-\item{month}{either an \code{integer} or a \code{character} of length 1. Must have 2
-characters (e.g. '01' and not '1'). Default is the current month.}
+\item{month}{either an \code{integer} or a \code{character} of length 1. Must have 1
+or 2 characters (e.g. '01' or '1'). Default is the current month.}
 }
 \value{
 A \code{data.frame} with the following columns:
@@ -41,8 +41,8 @@ head(get_calendar())
 head(get_calendar(month = 12))
 
 ## Calendar for April (current year) ----
-head(get_calendar(month = "04"))
+head(get_calendar(month = 4))
 
 ## Calendar for January 1970 ----
-head(get_calendar(year = 1970, month = "01"))
+head(get_calendar(year = 1970, month = 1))
 }
