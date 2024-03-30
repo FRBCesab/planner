@@ -109,13 +109,13 @@ add_events <- function(data, year, month, palette, weekend) {
       
       } else {
         
-        points(x   = (x_lft - 1 + 0.1),
+        points(x   = x_lft - 1 + 0.075,
                y   = y_btm - (0.18 * y_line + 0.02 * (y_line - 1)) - 0.18 / 2,
                pch = 19,
                cex = 0.85,
                col = data[i, "color"]) 
         
-        text(x      = (x_lft - 1 + 0.1),
+        text(x      = x_lft - 1 + 0.075,
              y      = y_btm - (0.18 * y_line + 0.02 * (y_line - 1)) - 0.18 / 2 - 0.01,
              labels = data[i, "event"],
              cex    = 0.65,
