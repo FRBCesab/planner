@@ -40,11 +40,9 @@ add_events <- function(data, year, month, palette) {
     }
     
     
-    ## Sort events ----
+    ## Multiweek events ----
     
-    data$"n_days" <- (as.Date(data$"to") - as.Date(data$"from"))
-    
-    data <- data[with(data, order(from, -n_days, event)), ]
+    data <- multiweek_events(data, year, month)
     
     
     ## Add events ----
@@ -57,9 +55,9 @@ add_events <- function(data, year, month, palette) {
       y_btm  <- calendar[which(calendar[ , "date"] == data[i, "from"]), "y"]
       y_top <- calendar[which(calendar[ , "date"] == data[i, "to"]), "y"]
       
-      if (y_btm != y_top) {
-        stop("Multiweek events are not supported", call. = FALSE)
-      }
+      # if (y_btm != y_top) {
+      #   stop("Multiweek events are not supported", call. = FALSE)
+      # }
       
       if (i == 1) {
         
