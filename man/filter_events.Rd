@@ -8,7 +8,8 @@ filter_events(
   data,
   year = format(Sys.Date(), "\%Y"),
   month = format(Sys.Date(), "\%m"),
-  format = "\%Y-\%m-\%d"
+  format = "\%Y-\%m-\%d",
+  weekend = FALSE
 )
 }
 \arguments{
@@ -25,6 +26,9 @@ or 2 characters (e.g. '01' or '1'). Default is the current month.}
 
 \item{format}{a \code{character} of length 1. Used to specify the format of the
 date. Default is \code{"\%Y-\%m-\%d"} (i.e. 2024-12-25).}
+
+\item{weekend}{a \code{logical}. If \code{TRUE} keeps Saturdays and Sundays. Default is
+\code{FALSE}.}
 }
 \value{
 A \code{data.frame}, same as the input but with only events matching the

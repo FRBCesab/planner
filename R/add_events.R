@@ -5,10 +5,10 @@
 #' 
 #' @noRd
 
-add_events <- function(data, year, month, palette) {
+add_events <- function(data, year, month, palette, weekend) {
   
-  calendar <- get_calendar(year, month)
-  data     <- filter_events(data, year, month)
+  calendar <- get_calendar(year, month, weekend = weekend)
+  data     <- filter_events(data, year, month, weekend = weekend)
   
   check_events(data)
   
@@ -42,7 +42,7 @@ add_events <- function(data, year, month, palette) {
     
     ## Multiweek events ----
     
-    data <- multiweek_events(data, year, month)
+    data <- multiweek_events(data, year, month, weekend = weekend)
     
     
     ## Add events ----
@@ -54,10 +54,6 @@ add_events <- function(data, year, month, palette) {
       
       y_btm  <- calendar[which(calendar[ , "date"] == data[i, "from"]), "y"]
       y_top <- calendar[which(calendar[ , "date"] == data[i, "to"]), "y"]
-      
-      # if (y_btm != y_top) {
-      #   stop("Multiweek events are not supported", call. = FALSE)
-      # }
       
       if (i == 1) {
         

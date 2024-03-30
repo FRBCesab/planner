@@ -5,13 +5,13 @@
 #' 
 #' @noRd
 
-multiweek_events <- function(data, year, month) {
+multiweek_events <- function(data, year, month, weekend) {
   
   events <- data.frame()
   
   if (nrow(data) > 0) {
     
-    calendar <- get_calendar(year, month)
+    calendar <- get_calendar(year, month, weekend)
     calendar <- calendar[ , c("date", "x", "y")]
     
     data$"n_days" <- (as.Date(data$"to") - as.Date(data$"from"))

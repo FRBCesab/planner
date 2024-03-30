@@ -341,7 +341,7 @@ plot_calendar <- function(year = format(Sys.Date(), "%Y"),
   
   if (!is.null(events)) {
     
-    add_events(events, year, month, palette)
+    add_events(events, year, month, palette, weekend)
   }
   
   

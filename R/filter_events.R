@@ -13,7 +13,10 @@
 #'   
 #' @param format a `character` of length 1. Used to specify the format of the 
 #'   date. Default is `"%Y-%m-%d"` (i.e. 2024-12-25).
-#'
+#' 
+#' @param weekend a `logical`. If `TRUE` keeps Saturdays and Sundays. Default is
+#'   `FALSE`.
+#'   
 #' @return A `data.frame`, same as the input but with only events matching the
 #' extent on the calendar.
 #' 
@@ -24,7 +27,7 @@
 
 filter_events <- function(data, year = format(Sys.Date(), "%Y"), 
                           month = format(Sys.Date(), "%m"), 
-                          format = "%Y-%m-%d") {
+                          format = "%Y-%m-%d", weekend = FALSE) {
   
   ## Check args ----
   
@@ -116,7 +119,7 @@ filter_events <- function(data, year = format(Sys.Date(), "%Y"),
   
   ## Filter event dates ----
   
-  calendar <- get_calendar(year, month)
+  calendar <- get_calendar(year, month, weekend)
   
   events <- data.frame()
   
