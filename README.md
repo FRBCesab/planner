@@ -32,25 +32,37 @@ included).
 
 - **Empty monthly calendar (with weekends)**
 
-![](man/figures/calendar-demo-2.png)
+![](man/figures/calendar-demo-1.png)
 
 <br/>
 
 - **Empty monthly calendar (without weekend)**
 
-![](man/figures/calendar-demo-1.png)
+![](man/figures/calendar-demo-2.png)
 
 <br/>
 
-- **Monthly calendar with events**
+- **Monthly calendar with single-day events**
 
 ![](man/figures/calendar-demo-3.png)
 
 <br/>
 
-- **Monthly calendar with multi-weeks events**
+- **Monthly calendar with multi-day events**
 
 ![](man/figures/calendar-demo-4.png)
+
+<br/>
+
+- **Monthly calendar with multi-week events**
+
+![](man/figures/calendar-demo-5.png)
+
+<br/>
+
+- **All-in-one**
+
+![](man/figures/calendar-demo-6.png)
 
 ## Installation
 
