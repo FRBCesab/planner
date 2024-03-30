@@ -38,8 +38,7 @@ multiweek_events <- function(data, year, month, weekend) {
       days <- days[order(days$"from", decreasing = FALSE), ]
       
       if (nrow(days) > 1) {
-        days[-nrow(days), "event"] <- paste(days[-nrow(days), "event"], 
-                                           "(continued)")
+        days[-1, "event"] <- paste(days[-1, "event"], "(continued)")
       }
       
       events <- rbind(events, days)
