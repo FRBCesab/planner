@@ -93,21 +93,40 @@ add_events <- function(data, year, month, palette) {
         y_line <- max(coords[which(coords$"key" %in% coord$"key"), "n"])
       }
       
-      rect(xleft   = x_lft - 1 + 0.05,
-           xright  = x_rght - 0.05,
-           ybottom = y_btm - (0.18 * y_line + 0.02 * (y_line - 1)) - 0.18,
-           ytop    = y_top - (0.18 * y_line + 0.02 * (y_line - 1)),
-           col     = data[i, "color"],
-           border  = "white",
-           lwd     = 0.75,
-           xpd     = TRUE)
+      if (data[i, "from"] != data[i, "to"]) {
+        
+        rect(xleft   = x_lft - 1 + 0.05,
+             xright  = x_rght - 0.05,
+             ybottom = y_btm - (0.18 * y_line + 0.02 * (y_line - 1)) - 0.18,
+             ytop    = y_top - (0.18 * y_line + 0.02 * (y_line - 1)),
+             col     = data[i, "color"],
+             border  = "white",
+             lwd     = 0.75,
+             xpd     = TRUE)
+        
+        text(x      = ((x_lft - 1 + 0.1) + (x_rght - 0.1)) / 2,
+             y      = y_btm - (0.18 * y_line + 0.02 * (y_line - 1)) - 0.18 / 2,
+             labels = data[i, "event"],
+             cex    = 0.65,
+             font   = 2,
+             col    = "#ffffff") 
       
-      text(x      = ((x_lft - 1 + 0.1) + (x_rght - 0.1)) / 2,
-           y      = y_btm - (0.18 * y_line + 0.02 * (y_line - 1)) - 0.18 / 2,
-           labels = data[i, "event"],
-           cex    = 0.65,
-           font   = 2,
-           col    = "#ffffff")
+      } else {
+        
+        points(x   = (x_lft - 1 + 0.1),
+               y   = y_btm - (0.18 * y_line + 0.02 * (y_line - 1)) - 0.18 / 2,
+               pch = 19,
+               cex = 0.85,
+               col = data[i, "color"]) 
+        
+        text(x      = (x_lft - 1 + 0.1),
+             y      = y_btm - (0.18 * y_line + 0.02 * (y_line - 1)) - 0.18 / 2 - 0.01,
+             labels = data[i, "event"],
+             cex    = 0.65,
+             font   = 2,
+             pos    = 4,
+             col    = data[i, "color"]) 
+      }
     }
   }
   
