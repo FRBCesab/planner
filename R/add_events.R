@@ -10,6 +10,8 @@ add_events <- function(data, year, month, palette) {
   calendar <- get_calendar(year, month)
   data     <- filter_events(data, year, month)
   
+  check_events(data)
+  
   if (nrow(data) > 0) {
     
     ## Add color to data ----
