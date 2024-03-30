@@ -280,6 +280,19 @@ plot_calendar <- function(year = format(Sys.Date(), "%Y"),
          lwd     = 0.75,
          xpd     = TRUE)
     
+    ## Add weekend ----
+    
+    if (calendar[i, "weekday"] %in% c("Saturday", "Sunday")) {
+      
+      rect(xleft   = calendar[i, "x"] - 1,
+           xright  = calendar[i, "x"],
+           ybottom = calendar[i, "y"] - 1,
+           ytop    = calendar[i, "y"],
+           col     = "#efefef",
+           lwd     = 0.75,
+           xpd     = TRUE)
+    }
+    
     
     ## Add holidays ----
     
