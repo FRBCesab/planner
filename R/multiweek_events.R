@@ -1,3 +1,10 @@
+#' Duplicate multi-week events and order events
+#' 
+#' @note
+#' For internal purpose only
+#' 
+#' @noRd
+
 multiweek_events <- function(data, year, month) {
   
   events <- data.frame()
