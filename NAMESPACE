@@ -2,6 +2,8 @@
 
 export(filter_events)
 export(get_calendar)
+export(get_month_name)
+export(get_weekday_name)
 export(number_of_days)
 export(plot_calendar)
 importFrom(grDevices,cairo_pdf)
