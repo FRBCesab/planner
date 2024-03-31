@@ -21,7 +21,10 @@ RoxygenNote: 7.3.1
 VignetteBuilder: knitr
 Imports: 
     graphics,
-    grDevices
+    grDevices,
+    httr,
+    rvest,
+    tools
 Suggests: 
     knitr,
     rmarkdown

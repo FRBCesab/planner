@@ -13,7 +13,8 @@ plot_calendar(
   events = NULL,
   weekend = FALSE,
   palette = "#990000",
-  lang = NULL
+  lang = NULL,
+  moon = TRUE
 )
 }
 \arguments{
@@ -52,6 +53,8 @@ be equal to \code{palette = c("cat_a" = "black", "cat_b" = "red")}.}
 (i.e. the language). Default is \code{NULL} (i.e. use the current locale).
 See examples below. Depending on the OS and the locale, the output can be
 weird.}
+
+\item{moon}{a \code{logical}. If \code{TRUE} (default) adds new/full moon glyph.}
 }
 \value{
 No return value. The calendar will exported as a \code{pdf} file in

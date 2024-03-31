@@ -35,6 +35,8 @@
 #'   (i.e. the language). Default is `NULL` (i.e. use the current locale).
 #'   See examples below. Depending on the OS and the locale, the output can be
 #'   weird.
+#' 
+#' @param moon a `logical`. If `TRUE` (default) adds new/full moon glyph.
 #'   
 #' @return No return value. The calendar will exported as a `pdf` file in 
 #' `path`.
@@ -50,7 +52,7 @@ plot_calendar <- function(year = format(Sys.Date(), "%Y"),
                           month = format(Sys.Date(), "%m"), 
                           path = getwd(), filename = NULL, title = NULL, 
                           events = NULL, weekend = FALSE, palette = "#990000",
-                          lang = NULL) {
+                          lang = NULL, moon = TRUE) {
   
   ## Check year ----
   
@@ -223,6 +225,13 @@ plot_calendar <- function(year = format(Sys.Date(), "%Y"),
   }
   
   
+  ## Get moon phases dates ----
+  
+  if (moon) {
+    moon_dates <- get_moon_phases(year)
+  }
+  
+  
   ## Define x-axis range ----
   
   x_lim <- c(0, length(unique(calendar$"en_weekday")))  
@@ -352,6 +361,32 @@ plot_calendar <- function(year = format(Sys.Date(), "%Y"),
          labels = calendar[i, "day"],
          pos    = 4,
          cex    = 0.35)
+    
+    
+    ## Add moon phases ----
+    
+    if (moon) {
+     
+      if (calendar[i, "date"] %in% moon_dates$"new_moon") {
+
+        points(x   = calendar[i, "x"] - 0.10,
+               y   = calendar[i, "y"] - 0.10,
+               pch = 21,
+               col = "#333333",
+               bg  = "#333333",
+               cex = 1)   
+      }
+      
+      if (calendar[i, "date"] %in% moon_dates$"full_moon") {
+        
+        points(x   = calendar[i, "x"] - 0.10,
+               y   = calendar[i, "y"] - 0.10,
+               pch = 21,
+               col = "#333333",
+               bg  = "#ffffff",
+               cex = 1)   
+      }
+    }
   }
   
   
