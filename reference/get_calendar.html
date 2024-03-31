@@ -57,7 +57,8 @@
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">get_calendar</span><span class="op">(</span></span>
 <span>  year <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/format.html" class="external-link">format</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.Date</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"%Y"</span><span class="op">)</span>,</span>
 <span>  month <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/format.html" class="external-link">format</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.Date</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"%m"</span><span class="op">)</span>,</span>
-<span>  weekend <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span>  weekend <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  lang <span class="op">=</span> <span class="cn">NULL</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -76,6 +77,13 @@ or 2 characters (e.g. '01' or '1'). Default is the current month.</p></dd>
 <dt>weekend</dt>
 <dd><p>a <code>logical</code>. If <code>TRUE</code> keeps Saturdays and Sundays. Default is
 <code>FALSE</code>.</p></dd>
+
+
+<dt>lang</dt>
+<dd><p>a <code>character</code> of length 1. Used to change the default locale
+(i.e. the language). Default is <code>NULL</code> (i.e. use the current locale).
+See examples below. Depending on the OS and the locale, the output can be
+weird.</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -97,43 +105,88 @@ or 2 characters (e.g. '01' or '1'). Default is the current month.</p></dd>
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co">## Calendar for the current month ----</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fu">get_calendar</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         date year month day week   weekday month_name x y</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 2024-03-01 2024     3   1    9    Friday      March 5 6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2 2024-03-04 2024     3   4   10    Monday      March 1 5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3 2024-03-05 2024     3   5   10   Tuesday      March 2 5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4 2024-03-06 2024     3   6   10 Wednesday      March 3 5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5 2024-03-07 2024     3   7   10  Thursday      March 4 5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6 2024-03-08 2024     3   8   10    Friday      March 5 5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         date year month day week en_weekday en_month_name user_weekday</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 2024-03-01 2024     3   1    9     Friday         March       Friday</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2 2024-03-04 2024     3   4   10     Monday         March       Monday</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3 2024-03-05 2024     3   5   10    Tuesday         March      Tuesday</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4 2024-03-06 2024     3   6   10  Wednesday         March    Wednesday</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5 2024-03-07 2024     3   7   10   Thursday         March     Thursday</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6 2024-03-08 2024     3   8   10     Friday         March       Friday</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   user_month_name x y</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1           March 5 6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2           March 1 5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3           March 2 5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4           March 3 5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5           March 4 5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6           March 5 5</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## Calendar for December (current year) ----</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fu">get_calendar</span><span class="op">(</span>month <span class="op">=</span> <span class="fl">12</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         date year month day week   weekday month_name x y</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 2024-12-02 2024    12   2   49    Monday   December 1 6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2 2024-12-03 2024    12   3   49   Tuesday   December 2 6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3 2024-12-04 2024    12   4   49 Wednesday   December 3 6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4 2024-12-05 2024    12   5   49  Thursday   December 4 6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5 2024-12-06 2024    12   6   49    Friday   December 5 6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6 2024-12-09 2024    12   9   50    Monday   December 1 5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         date year month day week en_weekday en_month_name user_weekday</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 2024-12-02 2024    12   2   49     Monday      December       Monday</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2 2024-12-03 2024    12   3   49    Tuesday      December      Tuesday</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3 2024-12-04 2024    12   4   49  Wednesday      December    Wednesday</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4 2024-12-05 2024    12   5   49   Thursday      December     Thursday</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5 2024-12-06 2024    12   6   49     Friday      December       Friday</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6 2024-12-09 2024    12   9   50     Monday      December       Monday</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   user_month_name x y</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1        December 1 6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2        December 2 6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3        December 3 6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4        December 4 6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5        December 5 6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6        December 1 5</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## Calendar for April (current year) ----</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fu">get_calendar</span><span class="op">(</span>month <span class="op">=</span> <span class="fl">4</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         date year month day week   weekday month_name x y</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 2024-04-01 2024     4   1   14    Monday      April 1 6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2 2024-04-02 2024     4   2   14   Tuesday      April 2 6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3 2024-04-03 2024     4   3   14 Wednesday      April 3 6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4 2024-04-04 2024     4   4   14  Thursday      April 4 6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5 2024-04-05 2024     4   5   14    Friday      April 5 6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6 2024-04-08 2024     4   8   15    Monday      April 1 5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         date year month day week en_weekday en_month_name user_weekday</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 2024-04-01 2024     4   1   14     Monday         April       Monday</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2 2024-04-02 2024     4   2   14    Tuesday         April      Tuesday</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3 2024-04-03 2024     4   3   14  Wednesday         April    Wednesday</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4 2024-04-04 2024     4   4   14   Thursday         April     Thursday</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5 2024-04-05 2024     4   5   14     Friday         April       Friday</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6 2024-04-08 2024     4   8   15     Monday         April       Monday</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   user_month_name x y</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1           April 1 6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2           April 2 6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3           April 3 6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4           April 4 6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5           April 5 6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6           April 1 5</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## Calendar for January 1970 ----</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fu">get_calendar</span><span class="op">(</span>year <span class="op">=</span> <span class="fl">1970</span>, month <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         date year month day week   weekday month_name x y</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 1970-01-01 1970     1   1    0  Thursday    January 4 6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2 1970-01-02 1970     1   2    0    Friday    January 5 6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3 1970-01-05 1970     1   5    1    Monday    January 1 5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4 1970-01-06 1970     1   6    1   Tuesday    January 2 5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5 1970-01-07 1970     1   7    1 Wednesday    January 3 5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6 1970-01-08 1970     1   8    1  Thursday    January 4 5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         date year month day week en_weekday en_month_name user_weekday</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 1970-01-01 1970     1   1    0   Thursday       January     Thursday</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2 1970-01-02 1970     1   2    0     Friday       January       Friday</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3 1970-01-05 1970     1   5    1     Monday       January       Monday</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4 1970-01-06 1970     1   6    1    Tuesday       January      Tuesday</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5 1970-01-07 1970     1   7    1  Wednesday       January    Wednesday</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6 1970-01-08 1970     1   8    1   Thursday       January     Thursday</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   user_month_name x y</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1         January 4 6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2         January 5 6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3         January 1 5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4         January 2 5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5         January 3 5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6         January 4 5</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## Change the locale ----</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fu">get_calendar</span><span class="op">(</span>year <span class="op">=</span> <span class="fl">1970</span>, month <span class="op">=</span> <span class="fl">1</span>, lang <span class="op">=</span> <span class="st">"spanish"</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         date year month day week en_weekday en_month_name user_weekday</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 1970-01-01 1970     1   1    0   Thursday       January     Thursday</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2 1970-01-02 1970     1   2    0     Friday       January       Friday</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3 1970-01-05 1970     1   5    1     Monday       January       Monday</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4 1970-01-06 1970     1   6    1    Tuesday       January      Tuesday</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5 1970-01-07 1970     1   7    1  Wednesday       January    Wednesday</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6 1970-01-08 1970     1   8    1   Thursday       January     Thursday</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   user_month_name x y</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1         January 4 6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2         January 5 6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3         January 1 5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4         January 2 5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5         January 3 5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6         January 4 5</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
