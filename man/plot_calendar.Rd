@@ -14,7 +14,7 @@ plot_calendar(
   weekend = TRUE,
   palette = "#990000",
   lang = NULL,
-  country = NULL,
+  holidays = NULL,
   moon = FALSE
 )
 }
@@ -53,8 +53,9 @@ be equal to \code{palette = c("cat_a" = "black", "cat_b" = "red")}.}
 (i.e. the language). Default is \code{NULL} (i.e. use the current locale).
 Depending on the OS and the locale, the output can be weird.}
 
-\item{country}{a \code{character} of length 1. The name of the country
-(e.g. \code{'France'}) used to retrieve holidays. Default is \code{NULL}.}
+\item{holidays}{an optional \code{data.frame} with the following columns: \code{date},
+the date of the holiday, and \code{name}, the name of the holiday. Typically,
+the output of \code{get_holidays()}. Default is \code{NULL}.}
 
 \item{moon}{a \code{logical}. If \code{TRUE} adds new/full moon glyph.
 Default is \code{FALSE}.}

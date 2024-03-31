@@ -34,8 +34,9 @@
 #'   (i.e. the language). Default is `NULL` (i.e. use the current locale).
 #'   Depending on the OS and the locale, the output can be weird.
 #' 
-#' @param country a `character` of length 1. The name of the country 
-#'   (e.g. `'France'`) used to retrieve holidays. Default is `NULL`.
+#' @param holidays an optional `data.frame` with the following columns: `date`,
+#'   the date of the holiday, and `name`, the name of the holiday. Typically,
+#'   the output of `get_holidays()`. Default is `NULL`.
 #'   
 #' @param moon a `logical`. If `TRUE` adds new/full moon glyph. 
 #'   Default is `FALSE`.
@@ -54,7 +55,7 @@ plot_calendar <- function(year = format(Sys.Date(), "%Y"),
                           month = format(Sys.Date(), "%m"), 
                           path = getwd(), filename = NULL, title = NULL, 
                           events = NULL, weekend = TRUE, palette = "#990000",
-                          lang = NULL, country = NULL, moon = FALSE) {
+                          lang = NULL, holidays = NULL, moon = FALSE) {
   
   ## Check year ----
   
@@ -230,15 +231,27 @@ plot_calendar <- function(year = format(Sys.Date(), "%Y"),
   }
   
   
-  ## Check country ----
+  ## Check holidays ----
   
-  if (!is.null(country)) {
-    if (!is.character(country)) {
-      stop("Argument 'country' must be a character", call. = FALSE)
+  if (!is.null(holidays)) {
+    
+    if (!is.data.frame(holidays)) {
+      stop("Argument 'holidays' must be a data.frame", call. = FALSE)
     }
     
-    if (length(country) != 1) {
-      stop("Argument 'country' must be of length 1", call. = FALSE)
+    if (nrow(holidays) == 0) {
+      stop("Argument 'holidays' must have at least one row (holiday)", 
+           call. = FALSE)
+    }
+    
+    if (!("date" %in% colnames(holidays))) {
+      stop("Column 'date' (date of the holiday) is missing from 'holidays'",
+           call. = FALSE)
+    }
+    
+    if (!("name" %in% colnames(holidays))) {
+      stop("Column 'name' (name of the holiday) is missing from 'holidays'",
+           call. = FALSE)
     }
   }
   
@@ -263,14 +276,7 @@ plot_calendar <- function(year = format(Sys.Date(), "%Y"),
   if (is.null(title)) {
     title <- paste(unique(calendar[ , "user_month_name"]), year)
   }
-  
-  
-  ## Get holidays ----
-  
-  if (!is.null(country)) {
-    offs <- get_holidays(country, year)
-  }
-    
+
 
   ## Get moon phases dates ----
   
@@ -363,9 +369,12 @@ plot_calendar <- function(year = format(Sys.Date(), "%Y"),
          col     = "#ffffff",
          lwd     = 0.75,
          xpd     = TRUE)
-    
-    
-    ## Add weekend ----
+  }
+  
+  
+  ## Add weekend ----
+  
+  for (i in 1:nrow(calendar)) {
     
     if (calendar[i, "en_weekday"] %in% c("Saturday", "Sunday")) {
       
@@ -377,13 +386,16 @@ plot_calendar <- function(year = format(Sys.Date(), "%Y"),
            lwd     = 0.75,
            xpd     = TRUE)
     }
+  }
+  
+  
+  ## Add holidays ----
     
+  if (!is.null(holidays)) {
     
-    ## Add holidays ----
+    for (i in 1:nrow(calendar)) {
     
-    if (!is.null(country)) {
-    
-      if (calendar[i, "date"] %in% offs$"date") {
+      if (calendar[i, "date"] %in% holidays$"date") {
         
         rect(xleft   = calendar[i, "x"] - 1,
              xright  = calendar[i, "x"],
@@ -394,16 +406,18 @@ plot_calendar <- function(year = format(Sys.Date(), "%Y"),
              xpd     = TRUE)
         
         text(x      = calendar[i, "x"] - 0.50,
-             y      = calendar[i, "y"] - 0.85,
-             labels = paste0("OFF\n", offs[which(offs$"date" == 
-                                                   calendar[i, "date"]), 
-                                           "name"]),
+             y      = calendar[i, "y"] - 0.90,
+             labels = holidays[which(holidays$"date" == calendar[i, "date"]), 
+                               "name"],
              cex    = 0.65,
              font   = 2,
              col    = "#666666")
       } 
     }
-    
+  }
+  
+  
+  for (i in 1:nrow(calendar)) {
     
     ## Add day number ----
     

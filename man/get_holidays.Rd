@@ -4,7 +4,7 @@
 \alias{get_holidays}
 \title{Get holidays for a given country and a given year}
 \usage{
-get_holidays(country, year)
+get_holidays(country, year, month)
 }
 \arguments{
 \item{country}{a \code{character} of length 1. The name of the country
@@ -12,12 +12,17 @@ get_holidays(country, year)
 
 \item{year}{either an \code{integer} or a \code{character} of length 1. Must have 4
 characters (e.g. '2024' and not '24').}
+
+\item{month}{either an \code{integer} or a \code{character} of length 1. Must have 1
+or 2 characters (e.g. '01' or '1'). Default is the current month.}
 }
 \value{
 A \code{data.frame} with the following columns:
 \itemize{
 \item \code{date}: the date of the holiday (\code{YYYY-MM-DD}),
-\item \code{name}: the name of the holiday (\code{character}).
+\item \code{name}: the name of the holiday (\code{character}),
+\item \code{type}: the category of the holiday (\code{character}),
+\item \code{details}: some detail about the holiday (\code{character}).
 }
 }
 \description{
@@ -26,6 +31,6 @@ Scraps the site \url{https://www.timeanddate.com} to retrieve holidays data.
 \examples{
 \dontrun{
 ## Get holidays for France in 2024 ----
-get_holidays("France", 2024)
+get_holidays(country = "France", year = 2024, month = 4)
 }
 }

@@ -9,19 +9,24 @@
 #' @param year either an `integer` or a `character` of length 1. Must have 4 
 #'   characters (e.g. '2024' and not '24').
 #'   
+#' @param month either an `integer` or a `character` of length 1. Must have 1 
+#'   or 2 characters (e.g. '01' or '1'). Default is the current month.
+#'   
 #' @return A `data.frame` with the following columns:
 #' - `date`: the date of the holiday (`YYYY-MM-DD`),
-#' - `name`: the name of the holiday (`character`).
+#' - `name`: the name of the holiday (`character`),
+#' - `type`: the category of the holiday (`character`),
+#' - `details`: some detail about the holiday (`character`).
 #' 
 #' @export
 #'
 #' @examples
 #' \dontrun{
 #' ## Get holidays for France in 2024 ----
-#' get_holidays("France", 2024)
+#' get_holidays(country = "France", year = 2024, month = 4)
 #' }
 
-get_holidays <- function(country, year) {
+get_holidays <- function(country, year, month) {
 
   ## Check args ----
   
@@ -52,6 +57,28 @@ get_holidays <- function(country, year) {
   
   if (nchar(year) != 4) {
     stop("Argument 'year' must be of the form 'YYYY'", call. = FALSE)
+  }
+  
+  if (missing(month)) {
+    stop("Argument 'month' is required", call. = FALSE)
+  }
+  
+  if (!is.character(month) && !is.numeric(month)) {
+    stop("Argument 'month' must either a character or an integer", 
+         call. = FALSE)
+  }
+  
+  if (length(month) > 1) {
+    stop("Argument 'month' must be of length 1", call. = FALSE)
+  }
+  
+  if (nchar(month) == 1) {
+    month <- paste0("0", month)
+  }
+  
+  if (nchar(month) != 2) {
+    stop("Argument 'month' must be of the form 'MM' (e.g. '01' instead of '1')",
+         call. = FALSE)
   }
 
   
@@ -90,17 +117,24 @@ get_holidays <- function(country, year) {
   content <- rvest::html_nodes(content, ".table")
   content <- rvest::html_table(content, fill = TRUE)
   content <- data.frame(content)
-  content <- content[-1, c(1, 3:4)]
-  content <- content[grep("national", tolower(content$"Type")), -3]
+  content <- content[-1, c(1, 3:5)]
   
   content$"Date" <- paste(content$"Date", year)
   content$"Date" <- as.character(as.Date(content$"Date", format = "%d %b %Y"))
   
   colnames(content) <- tolower(colnames(content))
   
-  content$"name" <- gsub(" / .*", "", content$"name")
+  content$"name"    <- gsub(" / .*", "", content$"name")
+  content$"details" <- ifelse(content$"details" == "", NA, content$"details")
   
   content <- content[!duplicated(content$"date"), ]
+  
+  
+  ## Filter by month ----
+  
+  content <- content[grep(paste0(year, "-", month), content$"date"), ]
+  
+  rownames(content) <- NULL
   
   content
 }
