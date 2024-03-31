@@ -19,8 +19,7 @@
 #'   the name of the event, `from`, the starting date of the event, `to`, the 
 #'   ending date of the event, and `category`, the category of the event.
 #' 
-#' @param weekend a `logical`. If `TRUE` keeps Saturdays and Sundays. Default is
-#'   `FALSE`.
+#' @param weekend a `logical`. If `TRUE` (default) keeps Saturdays and Sundays.
 #'   
 #' @param palette a `character` vector of colors for the events. If only one 
 #'   color is provided (default), all events will have this color. If
@@ -33,13 +32,13 @@
 #' 
 #' @param lang a `character` of length 1. Used to change the default locale
 #'   (i.e. the language). Default is `NULL` (i.e. use the current locale).
-#'   See examples below. Depending on the OS and the locale, the output can be
-#'   weird.
+#'   Depending on the OS and the locale, the output can be weird.
 #' 
 #' @param country a `character` of length 1. The name of the country 
 #'   (e.g. `'France'`) used to retrieve holidays. Default is `NULL`.
 #'   
-#' @param moon a `logical`. If `TRUE` (default) adds new/full moon glyph.
+#' @param moon a `logical`. If `TRUE` adds new/full moon glyph. 
+#'   Default is `FALSE`.
 #'   
 #' @return No return value. The calendar will exported as a `pdf` file in 
 #' `path`.
@@ -54,8 +53,8 @@
 plot_calendar <- function(year = format(Sys.Date(), "%Y"), 
                           month = format(Sys.Date(), "%m"), 
                           path = getwd(), filename = NULL, title = NULL, 
-                          events = NULL, weekend = FALSE, palette = "#990000",
-                          lang = NULL, country = NULL, moon = TRUE) {
+                          events = NULL, weekend = TRUE, palette = "#990000",
+                          lang = NULL, country = NULL, moon = FALSE) {
   
   ## Check year ----
   

@@ -11,11 +11,11 @@ plot_calendar(
   filename = NULL,
   title = NULL,
   events = NULL,
-  weekend = FALSE,
+  weekend = TRUE,
   palette = "#990000",
   lang = NULL,
   country = NULL,
-  moon = TRUE
+  moon = FALSE
 )
 }
 \arguments{
@@ -38,8 +38,7 @@ Default is \code{calendar-YYYY-MM.pdf} (e.g. \verb{calendar-2024-04.pdf}).}
 the name of the event, \code{from}, the starting date of the event, \code{to}, the
 ending date of the event, and \code{category}, the category of the event.}
 
-\item{weekend}{a \code{logical}. If \code{TRUE} keeps Saturdays and Sundays. Default is
-\code{FALSE}.}
+\item{weekend}{a \code{logical}. If \code{TRUE} (default) keeps Saturdays and Sundays.}
 
 \item{palette}{a \code{character} vector of colors for the events. If only one
 color is provided (default), all events will have this color. If
@@ -52,13 +51,13 @@ be equal to \code{palette = c("cat_a" = "black", "cat_b" = "red")}.}
 
 \item{lang}{a \code{character} of length 1. Used to change the default locale
 (i.e. the language). Default is \code{NULL} (i.e. use the current locale).
-See examples below. Depending on the OS and the locale, the output can be
-weird.}
+Depending on the OS and the locale, the output can be weird.}
 
 \item{country}{a \code{character} of length 1. The name of the country
 (e.g. \code{'France'}) used to retrieve holidays. Default is \code{NULL}.}
 
-\item{moon}{a \code{logical}. If \code{TRUE} (default) adds new/full moon glyph.}
+\item{moon}{a \code{logical}. If \code{TRUE} adds new/full moon glyph.
+Default is \code{FALSE}.}
 }
 \value{
 No return value. The calendar will exported as a \code{pdf} file in
