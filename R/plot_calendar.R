@@ -356,7 +356,9 @@ plot_calendar <- function(year = format(Sys.Date(), "%Y"),
     
     ## Add day number ----
     
-    text(x      = calendar[i, "x"] - 1.04,
+    x_at <- ifelse(length(unique(calendar$"en_weekday")) == 7, 0.02, 0.03)
+    
+    text(x      = calendar[i, "x"] - (1 + x_at),
          y      = calendar[i, "y"] - 0.10,
          labels = calendar[i, "day"],
          pos    = 4,
@@ -367,9 +369,11 @@ plot_calendar <- function(year = format(Sys.Date(), "%Y"),
     
     if (moon) {
      
+      x_at <- ifelse(length(unique(calendar$"en_weekday")) == 7, 0.10, 0.06)
+      
       if (calendar[i, "date"] %in% moon_dates$"new_moon") {
 
-        points(x   = calendar[i, "x"] - 0.10,
+        points(x   = calendar[i, "x"] - x_at,
                y   = calendar[i, "y"] - 0.10,
                pch = 21,
                col = "#333333",
@@ -379,7 +383,7 @@ plot_calendar <- function(year = format(Sys.Date(), "%Y"),
       
       if (calendar[i, "date"] %in% moon_dates$"full_moon") {
         
-        points(x   = calendar[i, "x"] - 0.10,
+        points(x   = calendar[i, "x"] - x_at,
                y   = calendar[i, "y"] - 0.10,
                pch = 21,
                col = "#333333",
