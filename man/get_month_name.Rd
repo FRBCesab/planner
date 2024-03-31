@@ -21,7 +21,12 @@ A \code{character} of length 1.
 Get the name of a month
 }
 \examples{
+## Default ----
 get_month_name(month = 4)
-get_month_name(month = 4, lang = "spanish")
-get_month_name(month = 4, lang = "finnish")
+
+## Get Spanish name ----
+get_month_name(month = 4, lang = "es_SP")
+
+## Get Finnish name ----
+get_month_name(month = 4, lang = "fi_FI")
 }

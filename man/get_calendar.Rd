@@ -56,6 +56,6 @@ head(get_calendar(month = 4))
 ## Calendar for January 1970 ----
 head(get_calendar(year = 1970, month = 1))
 
-## Change the locale ----
-head(get_calendar(year = 1970, month = 1, lang = "spanish"))
+## Change the locale (Spanish) ----
+head(get_calendar(year = 1970, month = 1, lang = "es_SP"))
 }

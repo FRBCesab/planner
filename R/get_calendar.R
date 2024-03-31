@@ -40,8 +40,8 @@
 #' ## Calendar for January 1970 ----
 #' head(get_calendar(year = 1970, month = 1))
 #' 
-#' ## Change the locale ----
-#' head(get_calendar(year = 1970, month = 1, lang = "spanish"))
+#' ## Change the locale (Spanish) ----
+#' head(get_calendar(year = 1970, month = 1, lang = "es_SP"))
 
 get_calendar <- function(year = format(Sys.Date(), "%Y"), 
                          month = format(Sys.Date(), "%m"), weekend = FALSE,

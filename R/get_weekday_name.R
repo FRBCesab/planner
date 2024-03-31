@@ -16,10 +16,17 @@
 #' @export
 #'
 #' @examples
+#' ## Default ----
 #' get_weekday_name("2024-04-01")
+#' 
+#' ## Change date format ----
 #' get_weekday_name("01/04/2024", format = "%d/%m/%Y")
-#' get_weekday_name("2024-04-01", lang = "spanish")
-#' get_weekday_name("2024-04-01", lang = "finnish")
+#' 
+#' ## Get Spanish name ----
+#' get_weekday_name("2024-04-01", lang = "es_SP")
+#' 
+#' ## Get Finnish name ----
+#' get_weekday_name("2024-04-01", lang = "fi_FI")
 
 get_weekday_name <- function(date, format = "%Y-%m-%d", lang = NULL) {
   
