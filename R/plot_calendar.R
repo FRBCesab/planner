@@ -234,12 +234,12 @@ plot_calendar <- function(year = format(Sys.Date(), "%Y"),
   
   
   ## Graphical parameters ----
-  
-  pdf(file       = file.path(path, filename),
-      width      = 11.69291,
-      height     =  8.26772,
-      paper      = "a4r",
-      pointsize  = 16)
+
+  cairo_pdf(filename   = file.path(path, filename),
+            width      = 11.69291,
+            height     =  8.26772,
+            # paper      = "a4r",
+            pointsize  = 16)
   
   par(family   = "serif", 
       mar      = c(0.5, 0.5, 2.5, 0.5), 
