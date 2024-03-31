@@ -8,6 +8,11 @@
 #'   
 #' @param weekend a `logical`. If `TRUE` keeps Saturdays and Sundays. Default is
 #'   `FALSE`.
+#' 
+#' @param lang a `character` of length 1. Used to change the default locale
+#'   (i.e. the language). Default is `NULL` (i.e. use the current locale).
+#'   See examples below. Depending on the OS and the locale, the output can be
+#'   weird.
 #'   
 #' @return A `data.frame` with the following columns:
 #' - `date`: the date of the day (`YYYY-MM-DD`),
@@ -34,9 +39,13 @@
 #' 
 #' ## Calendar for January 1970 ----
 #' head(get_calendar(year = 1970, month = 1))
+#' 
+#' ## Change the locale ----
+#' head(get_calendar(year = 1970, month = 1, lang = "spanish"))
 
 get_calendar <- function(year = format(Sys.Date(), "%Y"), 
-                         month = format(Sys.Date(), "%m"), weekend = FALSE) {
+                         month = format(Sys.Date(), "%m"), weekend = FALSE,
+                         lang = NULL) {
   
   ## Check args ----
   
@@ -72,9 +81,9 @@ get_calendar <- function(year = format(Sys.Date(), "%Y"),
   
   ## Switch to US locale ----
   
-  locale <- Sys.getlocale("LC_TIME")
+  lc_time    <- Sys.getlocale("LC_TIME")
+  on.exit(Sys.setlocale("LC_TIME", lc_time), add = TRUE)
   Sys.setlocale("LC_TIME", "en_US.UTF-8")
-  on.exit(Sys.setlocale("LC_TIME", locale))
   
   
   ## Create sequence of days ----
@@ -88,24 +97,44 @@ get_calendar <- function(year = format(Sys.Date(), "%Y"),
   
   ## Extract date info ----
   
-  calendar <- data.frame("date"       = dates,
-                         "year"       = as.integer(format(dates, "%Y")),
-                         "month"      = as.integer(format(dates, "%m")),
-                         "day"        = as.integer(format(dates, "%d")),
-                         "month_name" = tools::toTitleCase(format(dates, "%B")),
-                         "weekday"    = tools::toTitleCase(format(dates, "%A")),
-                         "week"       = as.integer(format(dates, "%W")))
+  calendar <- data.frame(
+    "date"          = dates,
+    "year"          = as.integer(format(dates, "%Y")),
+    "month"         = as.integer(format(dates, "%m")),
+    "day"           = as.integer(format(dates, "%d")),
+    "en_month_name" = tools::toTitleCase(format(dates, "%B")),
+    "en_weekday"    = tools::toTitleCase(format(dates, "%A")),
+    "week"          = as.integer(format(dates, "%W")))
+  
+  
+  ## Translate names ----
+  
+  if (is.null(lang)) {
+    lang <- lc_time
+  }
+  
+  Sys.setlocale("LC_TIME", lc_time)
+  
+  calendar$"user_month_name" <- unlist(lapply(calendar$"month", 
+                                              get_month_name,
+                                              lang = lang))
+  
+  calendar$"user_weekday"    <- unlist(lapply(calendar$"date", 
+                                              get_weekday_name,
+                                              lang = lang))
   
   
   ## Add position on x-axis (day of the week) ----
   
-  calendar <- merge(calendar, weekdays(), by = "weekday", all = TRUE)
+  calendar <- merge(calendar, weekdays(), by.x = "en_weekday", by.y = "weekday",
+                    all = TRUE)
   
   
   ## Remove weekend (if required) ----
   
   if (!weekend) {
-    calendar <- calendar[!(calendar$"weekday" %in% c("Saturday", "Sunday")), ]  
+    calendar <- calendar[!(calendar$"en_weekday" %in% 
+                             c("Saturday", "Sunday")), ]  
   }
   
   
@@ -131,8 +160,9 @@ get_calendar <- function(year = format(Sys.Date(), "%Y"),
   
   ## Order columns ----
   
-  calendar <- calendar[ , c("date", "year", "month", "day", "week", "weekday",
-                            "month_name", "x", "y")]
+  calendar <- calendar[ , c("date", "year", "month", "day", "week",
+                            "en_weekday", "en_month_name", "user_weekday", 
+                            "user_month_name","x", "y")]
   
   calendar
 }

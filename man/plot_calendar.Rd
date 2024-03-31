@@ -12,7 +12,8 @@ plot_calendar(
   title = NULL,
   events = NULL,
   weekend = FALSE,
-  palette = "#990000"
+  palette = "#990000",
+  lang = NULL
 )
 }
 \arguments{
@@ -46,6 +47,11 @@ accepted). Moreover, the \code{palette} argument must be a named vector, where
 names match event categories. For example, let's that the \code{events} object
 contains two categories (\code{cat_a} and \code{cat_b}), the \code{palette} argument must
 be equal to \code{palette = c("cat_a" = "black", "cat_b" = "red")}.}
+
+\item{lang}{a \code{character} of length 1. Used to change the default locale
+(i.e. the language). Default is \code{NULL} (i.e. use the current locale).
+See examples below. Depending on the OS and the locale, the output can be
+weird.}
 }
 \value{
 No return value. The calendar will exported as a \code{pdf} file in

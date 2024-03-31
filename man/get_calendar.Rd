@@ -7,7 +7,8 @@
 get_calendar(
   year = format(Sys.Date(), "\%Y"),
   month = format(Sys.Date(), "\%m"),
-  weekend = FALSE
+  weekend = FALSE,
+  lang = NULL
 )
 }
 \arguments{
@@ -19,6 +20,11 @@ or 2 characters (e.g. '01' or '1'). Default is the current month.}
 
 \item{weekend}{a \code{logical}. If \code{TRUE} keeps Saturdays and Sundays. Default is
 \code{FALSE}.}
+
+\item{lang}{a \code{character} of length 1. Used to change the default locale
+(i.e. the language). Default is \code{NULL} (i.e. use the current locale).
+See examples below. Depending on the OS and the locale, the output can be
+weird.}
 }
 \value{
 A \code{data.frame} with the following columns:
@@ -49,4 +55,7 @@ head(get_calendar(month = 4))
 
 ## Calendar for January 1970 ----
 head(get_calendar(year = 1970, month = 1))
+
+## Change the locale ----
+head(get_calendar(year = 1970, month = 1, lang = "spanish"))
 }

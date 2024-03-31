@@ -30,7 +30,12 @@
 #'   names match event categories. For example, let's that the `events` object
 #'   contains two categories (`cat_a` and `cat_b`), the `palette` argument must
 #'   be equal to `palette = c("cat_a" = "black", "cat_b" = "red")`.
-#'
+#' 
+#' @param lang a `character` of length 1. Used to change the default locale
+#'   (i.e. the language). Default is `NULL` (i.e. use the current locale).
+#'   See examples below. Depending on the OS and the locale, the output can be
+#'   weird.
+#'   
 #' @return No return value. The calendar will exported as a `pdf` file in 
 #' `path`.
 #' 
@@ -44,7 +49,8 @@
 plot_calendar <- function(year = format(Sys.Date(), "%Y"), 
                           month = format(Sys.Date(), "%m"), 
                           path = getwd(), filename = NULL, title = NULL, 
-                          events = NULL, weekend = FALSE, palette = "#990000") {
+                          events = NULL, weekend = FALSE, palette = "#990000",
+                          lang = NULL) {
   
   ## Check year ----
   
@@ -206,20 +212,20 @@ plot_calendar <- function(year = format(Sys.Date(), "%Y"),
   
   ## Get calendar data ----
   
-  calendar <- get_calendar(year, month, weekend)
+  calendar <- get_calendar(year, month, weekend, lang = lang)
   offs     <- days_off(year)
   
   
   ## Create title ----
   
   if (is.null(title)) {
-    title <- paste(unique(calendar[ , "month_name"]), year)
+    title <- paste(unique(calendar[ , "user_month_name"]), year)
   }
   
   
   ## Define x-axis range ----
   
-  x_lim <- c(0, length(unique(calendar$"weekday")))  
+  x_lim <- c(0, length(unique(calendar$"en_weekday")))  
  
   
   ## Define y-axis range ----
@@ -231,6 +237,28 @@ plot_calendar <- function(year = format(Sys.Date(), "%Y"),
   y_lim[1] <- ifelse(n_weeks == 6, 0, y_lim[1])
   y_lim[1] <- ifelse(n_weeks == 5, 1, y_lim[1])
   y_lim[1] <- ifelse(n_weeks == 4, 2, y_lim[1])
+  
+  
+  ## Switch locale ----
+  
+  if (!is.null(lang)) {
+    
+    o_warn <- options()$"warn"
+    
+    lc_time    <- Sys.getlocale("LC_TIME")
+    lc_ctype   <- Sys.getlocale("LC_CTYPE")
+    lc_collate <- Sys.getlocale("LC_COLLATE")
+    
+    on.exit(options("warn" = o_warn), add = TRUE)
+    on.exit(Sys.setlocale("LC_TIME",    lc_time), add = TRUE)
+    on.exit(Sys.setlocale("LC_CTYPE",   lc_ctype), add = TRUE)
+    on.exit(Sys.setlocale("LC_COLLATE", lc_collate), add = TRUE)
+    
+    options("warn" = -1)
+    Sys.setlocale("LC_TIME",    lang)
+    Sys.setlocale("LC_CTYPE",   lang)
+    Sys.setlocale("LC_COLLATE", lang)
+  }
   
   
   ## Graphical parameters ----
@@ -282,7 +310,7 @@ plot_calendar <- function(year = format(Sys.Date(), "%Y"),
     
     ## Add weekend ----
     
-    if (calendar[i, "weekday"] %in% c("Saturday", "Sunday")) {
+    if (calendar[i, "en_weekday"] %in% c("Saturday", "Sunday")) {
       
       rect(xleft   = calendar[i, "x"] - 1,
            xright  = calendar[i, "x"],
@@ -331,9 +359,12 @@ plot_calendar <- function(year = format(Sys.Date(), "%Y"),
   
   for (i in 1:nrow(weekdays())) {
     
+    label <- which(calendar$"en_weekday" == weekdays()[i, "weekday"])
+    label <- calendar[label[1], "user_weekday"]
+    
     text(x      = weekdays()[i, "x"] - 0.5,
          y      = 5.95,
-         labels = weekdays()[i, "weekday"],
+         labels = label,
          cex    = 0.65,
          pos    = 3,
          font   = 2,
