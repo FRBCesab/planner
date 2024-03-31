@@ -14,6 +14,7 @@ plot_calendar(
   weekend = FALSE,
   palette = "#990000",
   lang = NULL,
+  country = NULL,
   moon = TRUE
 )
 }
@@ -53,6 +54,9 @@ be equal to \code{palette = c("cat_a" = "black", "cat_b" = "red")}.}
 (i.e. the language). Default is \code{NULL} (i.e. use the current locale).
 See examples below. Depending on the OS and the locale, the output can be
 weird.}
+
+\item{country}{a \code{character} of length 1. The name of the country
+(e.g. \code{'France'}) used to retrieve holidays. Default is \code{NULL}.}
 
 \item{moon}{a \code{logical}. If \code{TRUE} (default) adds new/full moon glyph.}
 }

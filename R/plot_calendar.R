@@ -36,6 +36,9 @@
 #'   See examples below. Depending on the OS and the locale, the output can be
 #'   weird.
 #' 
+#' @param country a `character` of length 1. The name of the country 
+#'   (e.g. `'France'`) used to retrieve holidays. Default is `NULL`.
+#'   
 #' @param moon a `logical`. If `TRUE` (default) adds new/full moon glyph.
 #'   
 #' @return No return value. The calendar will exported as a `pdf` file in 
@@ -52,7 +55,7 @@ plot_calendar <- function(year = format(Sys.Date(), "%Y"),
                           month = format(Sys.Date(), "%m"), 
                           path = getwd(), filename = NULL, title = NULL, 
                           events = NULL, weekend = FALSE, palette = "#990000",
-                          lang = NULL, moon = TRUE) {
+                          lang = NULL, country = NULL, moon = TRUE) {
   
   ## Check year ----
   
@@ -215,7 +218,6 @@ plot_calendar <- function(year = format(Sys.Date(), "%Y"),
   ## Get calendar data ----
   
   calendar <- get_calendar(year, month, weekend, lang = lang)
-  offs     <- days_off(year)
   
   
   ## Create title ----
@@ -225,6 +227,13 @@ plot_calendar <- function(year = format(Sys.Date(), "%Y"),
   }
   
   
+  ## Get holidays ----
+  
+  if (!is.null(country)) {
+    offs <- get_holidays(country, year)
+  }
+    
+
   ## Get moon phases dates ----
   
   if (moon) {
@@ -317,6 +326,7 @@ plot_calendar <- function(year = format(Sys.Date(), "%Y"),
          lwd     = 0.75,
          xpd     = TRUE)
     
+    
     ## Add weekend ----
     
     if (calendar[i, "en_weekday"] %in% c("Saturday", "Sunday")) {
@@ -333,24 +343,27 @@ plot_calendar <- function(year = format(Sys.Date(), "%Y"),
     
     ## Add holidays ----
     
-    if (calendar[i, "date"] %in% offs$"date") {
-      
-      rect(xleft   = calendar[i, "x"] - 1,
-           xright  = calendar[i, "x"],
-           ybottom = calendar[i, "y"] - 1,
-           ytop    = calendar[i, "y"],
-           col     = "#efefef",
-           lwd     = 0.75,
-           xpd     = TRUE)
-      
-      text(x      = calendar[i, "x"] - 0.50,
-           y      = calendar[i, "y"] - 0.85,
-           labels = paste0("OFF\n", offs[which(offs$"date" == 
-                                                 calendar[i, "date"]), 
-                                         "event"]),
-           cex    = 0.65,
-           font   = 2,
-           col    = "#666666")
+    if (!is.null(country)) {
+    
+      if (calendar[i, "date"] %in% offs$"date") {
+        
+        rect(xleft   = calendar[i, "x"] - 1,
+             xright  = calendar[i, "x"],
+             ybottom = calendar[i, "y"] - 1,
+             ytop    = calendar[i, "y"],
+             col     = "#efefef",
+             lwd     = 0.75,
+             xpd     = TRUE)
+        
+        text(x      = calendar[i, "x"] - 0.50,
+             y      = calendar[i, "y"] - 0.85,
+             labels = paste0("OFF\n", offs[which(offs$"date" == 
+                                                   calendar[i, "date"]), 
+                                           "name"]),
+             cex    = 0.65,
+             font   = 2,
+             col    = "#666666")
+      } 
     }
     
     

@@ -2,6 +2,7 @@
 
 export(filter_events)
 export(get_calendar)
+export(get_holidays)
 export(get_month_name)
 export(get_moon_phases)
 export(get_weekday_name)
