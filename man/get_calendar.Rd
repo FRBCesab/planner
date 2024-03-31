@@ -56,6 +56,8 @@ head(get_calendar(month = 4))
 ## Calendar for January 1970 ----
 head(get_calendar(year = 1970, month = 1))
 
+\dontrun{
 ## Change the locale (Spanish) ----
-head(get_calendar(year = 1970, month = 1, lang = "es_SP"))
+head(get_calendar(year = 1970, month = 1, lang = "Spanish"))
+}
 }

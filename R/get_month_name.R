@@ -15,11 +15,13 @@
 #' ## Default ----
 #' get_month_name(month = 4)
 #' 
+#' \dontrun{
 #' ## Get Spanish name ----
-#' get_month_name(month = 4, lang = "es_SP")
+#' get_month_name(month = 4, lang = "Spanish")
 #' 
 #' ## Get Finnish name ----
-#' get_month_name(month = 4, lang = "fi_FI")
+#' get_month_name(month = 4, lang = "Finnish")
+#' }
 
 get_month_name <- function(month, lang = NULL) {
   
