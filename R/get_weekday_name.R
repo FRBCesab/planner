@@ -54,6 +54,24 @@ get_weekday_name <- function(date, format = "%Y-%m-%d", lang = NULL) {
          "information", call. = FALSE)
   }
   
+  if (!is.character(format)) {
+    stop("Argument 'format' must be a character", call. = FALSE)
+  }
+  
+  if (length(format) != 1) {
+    stop("Argument 'format' must be of length 1", call. = FALSE)
+  }
+  
+  if (!is.null(lang)) {
+    if (!is.character(lang)) {
+      stop("Argument 'lang' must be a character", call. = FALSE)
+    }
+    
+    if (length(lang) != 1) {
+      stop("Argument 'lang' must be of length 1", call. = FALSE)
+    }
+  }
+  
   
   ## Switch locale ----
   

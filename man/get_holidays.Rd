@@ -8,7 +8,7 @@ get_holidays(country, year)
 }
 \arguments{
 \item{country}{a \code{character} of length 1. The name of the country
-(e.g. \code{'France'}).}
+(e.g. \code{'France'}) to retrieve holidays for.}
 
 \item{year}{either an \code{integer} or a \code{character} of length 1. Must have 4
 characters (e.g. '2024' and not '24').}
@@ -24,6 +24,8 @@ A \code{data.frame} with the following columns:
 Scraps the site \url{https://www.timeanddate.com} to retrieve holidays data.
 }
 \examples{
+\dontrun{
 ## Get holidays for France in 2024 ----
 get_holidays("France", 2024)
+}
 }

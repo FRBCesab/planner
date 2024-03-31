@@ -28,6 +28,8 @@
 
 number_of_days <- function(date, format = "%Y-%m-%d") {
   
+  ## Check args ----
+  
   if (missing(date)) {
     stop("Argument 'date' is required", call. = FALSE)
   }

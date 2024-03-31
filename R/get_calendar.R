@@ -81,6 +81,27 @@ get_calendar <- function(year = format(Sys.Date(), "%Y"),
          call. = FALSE)
   }
   
+  if (!is.logical(weekend)) {
+    stop("Argument 'weekend' must be a logical ('TRUE' or 'FALSE')", 
+         call. = FALSE)
+  }
+  
+  if (length(weekend) != 1) {
+    stop("Argument 'weekend' must be a logical ('TRUE' or 'FALSE')", 
+         call. = FALSE)
+  }
+  
+  if (!is.null(lang)) {
+    if (!is.character(lang)) {
+      stop("Argument 'lang' must be a character", call. = FALSE)
+    }
+    
+    if (length(lang) != 1) {
+      stop("Argument 'lang' must be of length 1", call. = FALSE)
+    }
+  }
+  
+  
   ## Switch to US locale ----
   
   lc_time    <- Sys.getlocale("LC_TIME")

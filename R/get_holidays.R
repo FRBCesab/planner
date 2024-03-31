@@ -4,7 +4,7 @@
 #' Scraps the site <https://www.timeanddate.com> to retrieve holidays data.
 #'
 #' @param country a `character` of length 1. The name of the country 
-#'   (e.g. `'France'`).
+#'   (e.g. `'France'`) to retrieve holidays for.
 #'
 #' @param year either an `integer` or a `character` of length 1. Must have 4 
 #'   characters (e.g. '2024' and not '24').
@@ -16,8 +16,10 @@
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' ## Get holidays for France in 2024 ----
 #' get_holidays("France", 2024)
+#' }
 
 get_holidays <- function(country, year) {
 

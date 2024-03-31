@@ -116,6 +116,24 @@ filter_events <- function(data, year = format(Sys.Date(), "%Y"),
          "information", call. = FALSE)
   }
   
+  if (!is.character(format)) {
+    stop("Argument 'format' must be a character", call. = FALSE)
+  }
+  
+  if (length(format) != 1) {
+    stop("Argument 'format' must be of length 1", call. = FALSE)
+  }
+  
+  if (!is.logical(weekend)) {
+    stop("Argument 'weekend' must be a logical ('TRUE' or 'FALSE')", 
+         call. = FALSE)
+  }
+  
+  if (length(weekend) != 1) {
+    stop("Argument 'weekend' must be a logical ('TRUE' or 'FALSE')", 
+         call. = FALSE)
+  }
+  
   
   ## Filter event dates ----
   

@@ -1,25 +1,34 @@
 #' Get moon phases for a given year
 #'
 #' @description
-#' Scraps the site <https://www.timeanddate.com> to retrive moon phases data.
+#' Scraps the site <https://www.timeanddate.com> to retrieve moon phases data.
 #'
 #' @param year either an `integer` or a `character` of length 1. Must have 4 
 #'   characters (e.g. '2024' and not '24'). Default is the current year.
 #'   
 #' @return A `data.frame` with the following columns:
 #' - `new_moon`: the date of new moons (`YYYY-MM-DD`),
-#' - `full_moon`: the date of full moons (`integer`).
+#' - `full_moon`: the date of full moons (`YYYY-MM-DD`).
 #' 
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' ## Get moon phases for 2024 ----
 #' get_moon_phases(2024)
+#' }
 
 get_moon_phases <- function(year) {
   
+  ## Check args ----
+  
+  if (missing(year)) {
+    stop("Argument 'year' is required", call. = FALSE)
+  }
+  
   if (!is.character(year) && !is.numeric(year)) {
-    stop("Argument 'year' must either a character or an integer", call. = FALSE)
+    stop("Argument 'year' must be either a character or an integer", 
+         call. = FALSE)
   }
   
   if (length(year) > 1) {

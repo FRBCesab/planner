@@ -14,13 +14,15 @@ characters (e.g. '2024' and not '24'). Default is the current year.}
 A \code{data.frame} with the following columns:
 \itemize{
 \item \code{new_moon}: the date of new moons (\code{YYYY-MM-DD}),
-\item \code{full_moon}: the date of full moons (\code{integer}).
+\item \code{full_moon}: the date of full moons (\code{YYYY-MM-DD}).
 }
 }
 \description{
-Scraps the site \url{https://www.timeanddate.com} to retrive moon phases data.
+Scraps the site \url{https://www.timeanddate.com} to retrieve moon phases data.
 }
 \examples{
+\dontrun{
 ## Get moon phases for 2024 ----
 get_moon_phases(2024)
+}
 }

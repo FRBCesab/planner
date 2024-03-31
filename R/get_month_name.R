@@ -41,6 +41,16 @@ get_month_name <- function(month, lang = NULL) {
     stop("Argument 'month' must be between 1 and 12", call. = FALSE)
   }
   
+  if (!is.null(lang)) {
+    if (!is.character(lang)) {
+      stop("Argument 'lang' must be a character", call. = FALSE)
+    }
+    
+    if (length(lang) != 1) {
+      stop("Argument 'lang' must be of length 1", call. = FALSE)
+    }
+  }
+  
   
   ## Switch locale ----
   

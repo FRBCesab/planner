@@ -205,7 +205,51 @@ plot_calendar <- function(year = format(Sys.Date(), "%Y"),
   }
   
   
-  ## Create filename ----
+  ## Check moon ----
+  
+  if (!is.logical(moon)) {
+    stop("Argument 'moon' must be a logical ('TRUE' or 'FALSE')", 
+         call. = FALSE)
+  }
+  
+  if (length(moon) != 1) {
+    stop("Argument 'moon' must be a logical ('TRUE' or 'FALSE')", 
+         call. = FALSE)
+  }
+  
+  
+  ## Check lang ----
+  
+  if (!is.null(lang)) {
+    if (!is.character(lang)) {
+      stop("Argument 'lang' must be a character", call. = FALSE)
+    }
+    
+    if (length(lang) != 1) {
+      stop("Argument 'lang' must be of length 1", call. = FALSE)
+    }
+  }
+  
+  
+  ## Check country ----
+  
+  if (!is.null(country)) {
+    if (!is.character(country)) {
+      stop("Argument 'country' must be a character", call. = FALSE)
+    }
+    
+    if (length(country) != 1) {
+      stop("Argument 'country' must be of length 1", call. = FALSE)
+    }
+  }
+  
+  
+  ## Get calendar data ----
+  
+  calendar <- get_calendar(year, month, weekend, lang = lang)
+  
+  
+  ## Create file name ----
   
   if (is.null(filename)) {
     filename <- paste("calendar", year, month, sep = "-")
@@ -213,11 +257,6 @@ plot_calendar <- function(year = format(Sys.Date(), "%Y"),
   
   filename <- paste0(filename, ".pdf")
   filename <- gsub("\\.pdf\\.pdf", ".pdf", filename)
-  
-  
-  ## Get calendar data ----
-  
-  calendar <- get_calendar(year, month, weekend, lang = lang)
   
   
   ## Create title ----
