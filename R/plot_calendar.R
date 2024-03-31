@@ -335,10 +335,10 @@ plot_calendar <- function(year = format(Sys.Date(), "%Y"),
            xpd     = TRUE)
       
       text(x      = calendar[i, "x"] - 0.50,
-           y      = calendar[i, "y"] - 0.75,
-           labels = paste0("OFF - ", offs[which(offs$"date" == 
-                                                  calendar[i, "date"]), 
-                                          "event"]),
+           y      = calendar[i, "y"] - 0.85,
+           labels = paste0("OFF\n", offs[which(offs$"date" == 
+                                                 calendar[i, "date"]), 
+                                         "event"]),
            cex    = 0.65,
            font   = 2,
            col    = "#666666")
