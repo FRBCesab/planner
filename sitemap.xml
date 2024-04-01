@@ -34,7 +34,13 @@
     <loc>https://frbcesab.github.io/calendar/reference/filter_events.html</loc>
   </url>
   <url>
+    <loc>https://frbcesab.github.io/calendar/reference/filter_holidays.html</loc>
+  </url>
+  <url>
     <loc>https://frbcesab.github.io/calendar/reference/get_calendar.html</loc>
+  </url>
+  <url>
+    <loc>https://frbcesab.github.io/calendar/reference/get_holiday_types.html</loc>
   </url>
   <url>
     <loc>https://frbcesab.github.io/calendar/reference/get_holidays.html</loc>

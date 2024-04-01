@@ -61,11 +61,11 @@
 <span>  filename <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  title <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  events <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  weekend <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  weekend <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  palette <span class="op">=</span> <span class="st">"#990000"</span>,</span>
 <span>  lang <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  country <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  moon <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span>  holidays <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  moon <span class="op">=</span> <span class="cn">FALSE</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -103,8 +103,7 @@ ending date of the event, and <code>category</code>, the category of the event.<
 
 
 <dt>weekend</dt>
-<dd><p>a <code>logical</code>. If <code>TRUE</code> keeps Saturdays and Sundays. Default is
-<code>FALSE</code>.</p></dd>
+<dd><p>a <code>logical</code>. If <code>TRUE</code> (default) keeps Saturdays and Sundays.</p></dd>
 
 
 <dt>palette</dt>
@@ -121,17 +120,18 @@ be equal to <code>palette = c("cat_a" = "black", "cat_b" = "red")</code>.</p></d
 <dt>lang</dt>
 <dd><p>a <code>character</code> of length 1. Used to change the default locale
 (i.e. the language). Default is <code>NULL</code> (i.e. use the current locale).
-See examples below. Depending on the OS and the locale, the output can be
-weird.</p></dd>
+Depending on the OS and the locale, the output can be weird.</p></dd>
 
 
-<dt>country</dt>
-<dd><p>a <code>character</code> of length 1. The name of the country
-(e.g. <code>'France'</code>) used to retrieve holidays. Default is <code>NULL</code>.</p></dd>
+<dt>holidays</dt>
+<dd><p>an optional <code>data.frame</code> with the following columns: <code>date</code>,
+the date of the holiday, and <code>name</code>, the name of the holiday. Typically,
+the output of <code><a href="get_holidays.html">get_holidays()</a></code>. Default is <code>NULL</code>.</p></dd>
 
 
 <dt>moon</dt>
-<dd><p>a <code>logical</code>. If <code>TRUE</code> (default) adds new/full moon glyph.</p></dd>
+<dd><p>a <code>logical</code>. If <code>TRUE</code> adds new/full moon glyph.
+Default is <code>FALSE</code>.</p></dd>
 
 </dl></div>
     <div class="section level2">
