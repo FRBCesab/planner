@@ -21,8 +21,7 @@ A \code{data.frame} with the following columns:
 \itemize{
 \item \code{date}: the date of the holiday (\code{YYYY-MM-DD}),
 \item \code{name}: the name of the holiday (\code{character}),
-\item \code{type}: the category of the holiday (\code{character}),
-\item \code{details}: some detail about the holiday (\code{character}).
+\item \code{type}: the category of the holiday (\code{character}).
 }
 }
 \description{

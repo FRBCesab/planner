@@ -15,8 +15,7 @@
 #' @return A `data.frame` with the following columns:
 #' - `date`: the date of the holiday (`YYYY-MM-DD`),
 #' - `name`: the name of the holiday (`character`),
-#' - `type`: the category of the holiday (`character`),
-#' - `details`: some detail about the holiday (`character`).
+#' - `type`: the category of the holiday (`character`).
 #' 
 #' @export
 #'
@@ -117,7 +116,7 @@ get_holidays <- function(country, year, month) {
   content <- rvest::html_nodes(content, ".table")
   content <- rvest::html_table(content, fill = TRUE)
   content <- data.frame(content)
-  content <- content[-1, c(1, 3:5)]
+  content <- content[-1, c(1, 3:4)]
   
   content$"Date" <- paste(content$"Date", year)
   content$"Date" <- as.character(as.Date(content$"Date", format = "%d %b %Y"))
@@ -125,7 +124,6 @@ get_holidays <- function(country, year, month) {
   colnames(content) <- tolower(colnames(content))
   
   content$"name"    <- gsub(" / .*", "", content$"name")
-  content$"details" <- ifelse(content$"details" == "", NA, content$"details")
   
   content <- content[!duplicated(content$"date"), ]
   
