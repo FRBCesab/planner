@@ -55,12 +55,12 @@
 #' ## Add an example ----
 #' }
 
-plot_calendar <- function(year = format(Sys.Date(), "%Y"), 
-                          month = format(Sys.Date(), "%m"), 
-                          path = getwd(), filename = NULL, title = NULL, 
-                          events = NULL, weekend = TRUE, palette = "#990000",
-                          lang = NULL, holidays = NULL, moon = FALSE, 
-                          specials = NULL) {
+monthly_calendar <- function(year = format(Sys.Date(), "%Y"), 
+                             month = format(Sys.Date(), "%m"), 
+                             path = getwd(), filename = NULL, title = NULL, 
+                             events = NULL, weekend = TRUE, palette = "#990000",
+                             lang = NULL, holidays = NULL, moon = FALSE, 
+                             specials = NULL) {
   
   ## Check year ----
   

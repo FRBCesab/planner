@@ -22,8 +22,8 @@
 #' - `week`: the number of week (`integer`),
 #' - `weekday`: the name of the day of the week (`character`),
 #' - `month_name`: the name of month (`character`),
-#' - `x`: position on the x-axis (used by `plot_calendar()`),
-#' - `y`: position on the y-axis (used by `plot_calendar()`).
+#' - `x`: position on the x-axis (used by `monthly_calendar()`),
+#' - `y`: position on the y-axis (used by `monthly_calendar()`).
 #' 
 #' @export
 #'

@@ -36,8 +36,8 @@ A \code{data.frame} with the following columns:
 \item \code{week}: the number of week (\code{integer}),
 \item \code{weekday}: the name of the day of the week (\code{character}),
 \item \code{month_name}: the name of month (\code{character}),
-\item \code{x}: position on the x-axis (used by \code{plot_calendar()}),
-\item \code{y}: position on the y-axis (used by \code{plot_calendar()}).
+\item \code{x}: position on the x-axis (used by \code{monthly_calendar()}),
+\item \code{y}: position on the y-axis (used by \code{monthly_calendar()}).
 }
 }
 \description{
