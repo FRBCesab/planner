@@ -89,7 +89,7 @@ add_events <- function(data, year, month, palette, weekend) {
         y_line <- max(coords[which(coords$"key" %in% coord$"key"), "n"])
       }
       
-      if (data[i, "from"] != data[i, "to"]) {
+      # if (data[i, "from"] != data[i, "to"]) {
         
         rect(xleft   = x_lft - 1 + 0.05,
              xright  = x_rght - 0.05,
@@ -107,22 +107,22 @@ add_events <- function(data, year, month, palette, weekend) {
              font   = 2,
              col    = "#ffffff") 
       
-      } else {
+      # } else {
         
-        points(x   = x_lft - 1 + 0.075,
-               y   = y_btm - (0.18 * y_line + 0.02 * (y_line - 1)) - 0.18 / 2,
-               pch = 19,
-               cex = 0.85,
-               col = data[i, "color"]) 
-        
-        text(x      = x_lft - 1 + 0.075,
-             y      = y_btm - (0.18 * y_line + 0.02 * (y_line - 1)) - 0.18 / 2 - 0.01,
-             labels = data[i, "event"],
-             cex    = 0.65,
-             font   = 2,
-             pos    = 4,
-             col    = data[i, "color"]) 
-      }
+        # points(x   = x_lft - 1 + 0.075,
+        #        y   = y_btm - (0.18 * y_line + 0.02 * (y_line - 1)) - 0.18 / 2,
+        #        pch = 19,
+        #        cex = 0.85,
+        #        col = data[i, "color"]) 
+        # 
+        # text(x      = x_lft - 1 + 0.075,
+        #      y      = y_btm - (0.18 * y_line + 0.02 * (y_line - 1)) - 0.18 / 2 - 0.01,
+        #      labels = data[i, "event"],
+        #      cex    = 0.65,
+        #      font   = 2,
+        #      pos    = 4,
+        #      col    = data[i, "color"]) 
+      # }
     }
   }
   
