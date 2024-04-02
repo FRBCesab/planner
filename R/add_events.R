@@ -99,8 +99,8 @@ add_events <- function(data, year, month, palette, weekend) {
       
       # if (data[i, "from"] != data[i, "to"]) {
         
-        rect(xleft   = x_lft - 1 + 0.05,
-             xright  = x_rght - 0.05,
+        rect(xleft   = x_lft - 1 + 0.025,
+             xright  = x_rght - 0.025,
              ybottom = y_btm - (0.18 * y_line + 0.02 * (y_line - 1)) - 0.18,
              ytop    = y_top - (0.18 * y_line + 0.02 * (y_line - 1)),
              col     = data[i, "color"],
