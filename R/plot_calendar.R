@@ -294,7 +294,7 @@ plot_calendar <- function(year = format(Sys.Date(), "%Y"),
   
   n_weeks <- length(unique(calendar$"week"))
   
-  y_lim <- c(NA, 6)
+  y_lim <- c(NA, 6.20)
   
   y_lim[1] <- ifelse(n_weeks == 6, 0, y_lim[1])
   y_lim[1] <- ifelse(n_weeks == 5, 1, y_lim[1])
@@ -406,12 +406,19 @@ plot_calendar <- function(year = format(Sys.Date(), "%Y"),
              xpd     = TRUE)
         
         text(x      = calendar[i, "x"] - 0.50,
-             y      = calendar[i, "y"] - 0.90,
+             y      = calendar[i, "y"] - 0.10,
              labels = holidays[which(holidays$"date" == calendar[i, "date"]), 
                                "name"],
-             cex    = 0.65,
+             cex    = 0.45,
              font   = 2,
              col    = "#666666")
+        
+        text(x      = calendar[i, "x"] - 0.50,
+             y      = calendar[i, "y"] - 0.50,
+             labels = "OFF",
+             cex    = 2,
+             font   = 2,
+             col    = "#ffffff")
       } 
     }
   }
@@ -461,16 +468,36 @@ plot_calendar <- function(year = format(Sys.Date(), "%Y"),
   
   ## Add day names (top axis) ----
   
-  for (i in 1:nrow(weekdays())) {
+  if (!weekend) {
     
-    label <- which(calendar$"en_weekday" == weekdays()[i, "weekday"])
+    week_days <- weekdays()
+    week_days <- week_days[!(week_days$weekday %in% c("Saturday", "Sunday")), ]
+    
+  } else {
+    
+    week_days <- weekdays()
+  }
+  
+  for (i in 1:nrow(week_days)) {
+    
+    rect(xleft   = i - 1,
+         xright  = i,
+         ybottom = 6.00,
+         ytop    = 6.20,
+         col     = "#333333",
+         border  = "#333333",
+         lwd     = 0.75,
+         xpd     = TRUE)
+    
+    label <- which(calendar$"en_weekday" == week_days[i, "weekday"])
     label <- calendar[label[1], "user_weekday"]
     
-    text(x      = weekdays()[i, "x"] - 0.5,
-         y      = 5.95,
+    text(x      = week_days[i, "x"] - 0.5,
+         y      = 6.10,
          labels = label,
          cex    = 0.65,
-         pos    = 3,
+         col    = "#ffffff",
+         # pos    = 3,
          font   = 2,
          xpd    = TRUE)
   }
