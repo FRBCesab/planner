@@ -15,7 +15,8 @@ plot_calendar(
   palette = "#990000",
   lang = NULL,
   holidays = NULL,
-  moon = FALSE
+  moon = FALSE,
+  specials = NULL
 )
 }
 \arguments{
@@ -59,6 +60,10 @@ the output of \code{get_holidays()}. Default is \code{NULL}.}
 
 \item{moon}{a \code{logical}. If \code{TRUE} adds new/full moon glyph.
 Default is \code{FALSE}.}
+
+\item{specials}{an optional \code{data.frame} with the following columns: \code{date},
+the date of the special day, and \code{name}, the name of the special day. These
+special days will be added at the top of the day box. Default is \code{NULL}.}
 }
 \value{
 No return value. The calendar will exported as a \code{pdf} file in

@@ -37,6 +37,10 @@
 #' @param holidays an optional `data.frame` with the following columns: `date`,
 #'   the date of the holiday, and `name`, the name of the holiday. Typically,
 #'   the output of `get_holidays()`. Default is `NULL`.
+#' 
+#' @param specials an optional `data.frame` with the following columns: `date`,
+#'   the date of the special day, and `name`, the name of the special day. These
+#'   special days will be added at the top of the day box. Default is `NULL`.
 #'   
 #' @param moon a `logical`. If `TRUE` adds new/full moon glyph. 
 #'   Default is `FALSE`.
@@ -55,7 +59,8 @@ plot_calendar <- function(year = format(Sys.Date(), "%Y"),
                           month = format(Sys.Date(), "%m"), 
                           path = getwd(), filename = NULL, title = NULL, 
                           events = NULL, weekend = TRUE, palette = "#990000",
-                          lang = NULL, holidays = NULL, moon = FALSE) {
+                          lang = NULL, holidays = NULL, moon = FALSE, 
+                          specials = NULL) {
   
   ## Check year ----
   
@@ -256,6 +261,31 @@ plot_calendar <- function(year = format(Sys.Date(), "%Y"),
   }
   
   
+  ## Check specials ----
+  
+  if (!is.null(specials)) {
+    
+    if (!is.data.frame(specials)) {
+      stop("Argument 'specials' must be a data.frame", call. = FALSE)
+    }
+    
+    if (nrow(specials) == 0) {
+      stop("Argument 'specials' must have at least one row (holiday)", 
+           call. = FALSE)
+    }
+    
+    if (!("date" %in% colnames(specials))) {
+      stop("Column 'date' (date of the special day) is missing from 'specials'",
+           call. = FALSE)
+    }
+    
+    if (!("name" %in% colnames(specials))) {
+      stop("Column 'name' (name of the special day) is missing from 'specials'",
+           call. = FALSE)
+    }
+  }
+  
+  
   ## Get calendar data ----
   
   calendar <- get_calendar(year, month, weekend, lang = lang)
@@ -411,7 +441,7 @@ plot_calendar <- function(year = format(Sys.Date(), "%Y"),
                                "name"],
              cex    = 0.45,
              font   = 2,
-             col    = "#666666")
+             col    = "#333333")
         
         text(x      = calendar[i, "x"] - 0.50,
              y      = calendar[i, "y"] - 0.50,
@@ -419,6 +449,36 @@ plot_calendar <- function(year = format(Sys.Date(), "%Y"),
              cex    = 2,
              font   = 2,
              col    = "#ffffff")
+      } 
+    }
+  }
+  
+  
+  ## Add specials ----
+  
+  if (!is.null(specials)) {
+    
+    specials$"date" <- as.character(specials$"date")
+    
+    x_at <- ifelse(length(unique(calendar$"en_weekday")) == 7, 0.02, 0.03)
+    
+    for (i in 1:nrow(calendar)) {
+      
+      if (calendar[i, "date"] %in% specials$"date") {
+
+        add_image(file = "inst/images/special.png", 
+                  x    = calendar[i, "x"] - (.91 + x_at),
+                  y    = calendar[i, "y"] - 0.90, 
+                  size = 1)
+        
+        text(x      = calendar[i, "x"] - (.92 + x_at),
+             y      = calendar[i, "y"] - 0.91,
+             labels = specials[which(specials$"date" == calendar[i, "date"]), 
+                               "name"],
+             cex    = 0.45,
+             font   = 2,
+             pos    = 4,
+             col    = "#333333")
       } 
     }
   }
@@ -445,22 +505,48 @@ plot_calendar <- function(year = format(Sys.Date(), "%Y"),
       
       if (calendar[i, "date"] %in% moon_dates$"new_moon") {
 
-        points(x   = calendar[i, "x"] - x_at,
-               y   = calendar[i, "y"] - 0.10,
-               pch = 21,
-               col = "#333333",
-               bg  = "#333333",
-               cex = 1)   
+        add_image(file = "inst/images/new-moon.png", 
+                  x    = calendar[i, "x"] - x_at,
+                  y    = calendar[i, "y"] - 0.10,
+                  size = 1)
+        
+        # points(x   = calendar[i, "x"] - x_at,
+        #        y   = calendar[i, "y"] - 0.10,
+        #        pch = 21,
+        #        col = "#333333",
+        #        bg  = "#333333",
+        #        cex = 1)   
       }
       
       if (calendar[i, "date"] %in% moon_dates$"full_moon") {
         
-        points(x   = calendar[i, "x"] - x_at,
-               y   = calendar[i, "y"] - 0.10,
-               pch = 21,
-               col = "#333333",
-               bg  = "#ffffff",
-               cex = 1)   
+        add_image(file = "inst/images/full-moon.png", 
+                  x    = calendar[i, "x"] - x_at,
+                  y    = calendar[i, "y"] - 0.10,
+                  size = 1)
+        
+        # points(x   = calendar[i, "x"] - x_at,
+        #        y   = calendar[i, "y"] - 0.10,
+        #        pch = 21,
+        #        col = "#333333",
+        #        bg  = "#ffffff",
+        #        cex = 1)   
+      }
+      
+      if (calendar[i, "date"] %in% moon_dates$"first_quarter") {
+        
+        add_image(file = "inst/images/first-quarter.png", 
+                  x    = calendar[i, "x"] - x_at,
+                  y    = calendar[i, "y"] - 0.10,
+                  size = 1)
+      }
+      
+      if (calendar[i, "date"] %in% moon_dates$"third_quarter") {
+        
+        add_image(file = "inst/images/third-quarter.png", 
+                  x    = calendar[i, "x"] - x_at,
+                  y    = calendar[i, "y"] - 0.10,
+                  size = 1)
       }
     }
   }

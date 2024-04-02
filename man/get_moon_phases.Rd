@@ -14,7 +14,9 @@ characters (e.g. '2024' and not '24'). Default is the current year.}
 A \code{data.frame} with the following columns:
 \itemize{
 \item \code{new_moon}: the date of new moons (\code{YYYY-MM-DD}),
-\item \code{full_moon}: the date of full moons (\code{YYYY-MM-DD}).
+\item \code{first_quarter}: the date of first quarters (\code{YYYY-MM-DD}),
+\item \code{full_moon}: the date of full moons (\code{YYYY-MM-DD}),
+\item \code{third_quarter}: the date of third quarters (\code{YYYY-MM-DD}).
 }
 }
 \description{

@@ -23,8 +23,11 @@ Imports:
     graphics,
     grDevices,
     httr,
+    jpeg,
+    png,
     rvest,
-    tools
+    tools,
+    utils
 Suggests: 
     knitr,
     rmarkdown
