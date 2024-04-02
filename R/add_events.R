@@ -16,27 +16,35 @@ add_events <- function(data, year, month, palette, weekend) {
     
     ## Add color to data ----
     
-    categories <- unique(data$"category")
-    
-    if (length(palette) > 1) {
+    if ("category" %in% colnames(data)) {
       
-      if (any(names(palette) == "")) {
-        stop("Some colors in the palette don't have name", call. = FALSE)
+      categories <- unique(data$"category")
+      categories <- categories[!is.na(categories)]
+      
+      if (length(palette) > 1) {
+        
+        if (any(names(palette) == "")) {
+          stop("Some colors in the palette don't have name", call. = FALSE)
+        }
+        
+        if (any(!(categories %in% names(palette)))) {
+          stop("Some event categories don't have color. Please check the ", 
+               "argument 'palette'", call. = FALSE)
+        }
+        
+        palette <- data.frame("category" = names(palette), 
+                              "color"    = palette)
+        
+        data <- merge(data, palette, by = "category", all.x = TRUE, all.y = FALSE)
+        
+      } else {
+        
+        data$"color" <- palette[1L]
       }
-      
-      if (any(!(categories %in% names(palette)))) {
-        stop("Some event categories don't have color. Please check the ", 
-             "argument 'palette'", call. = FALSE)
-      }
-      
-      palette <- data.frame("category" = names(palette), 
-                            "color"    = palette)
-      
-      data <- merge(data, palette, by = "category", all.x = TRUE, all.y = FALSE)
       
     } else {
       
-      data$"color" <- palette
+      data$"color" <- palette[1L]
     }
     
     
@@ -102,7 +110,7 @@ add_events <- function(data, year, month, palette, weekend) {
         
         text(x      = ((x_lft - 1 + 0.1) + (x_rght - 0.1)) / 2,
              y      = y_btm - (0.18 * y_line + 0.02 * (y_line - 1)) - 0.18 / 2,
-             labels = data[i, "event"],
+             labels = data[i, "name"],
              cex    = 0.65,
              font   = 2,
              col    = "#ffffff") 

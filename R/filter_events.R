@@ -1,7 +1,7 @@
 #' Filter calendar events to match the extent on the calendar
 #'
 #' @param data a `data.frame` with at least the following columns: `from`, the
-#'   start of the event, `to`, the end of the event, `event`, the name of the 
+#'   start of the event, `to`, the end of the event, `name`, the name of the 
 #'   event, and `category`, the category of the event (used for different 
 #'   colors).
 #'   
@@ -84,15 +84,15 @@ filter_events <- function(data, year = format(Sys.Date(), "%Y"),
          call. = FALSE)
   }
   
-  if (!("event" %in% colnames(data))) {
-    stop("Column 'event' (name of the event) is missing from 'data'",
+  if (!("name" %in% colnames(data))) {
+    stop("Column 'name' (name of the event) is missing from 'data'",
          call. = FALSE)
   }
   
-  if (!("category" %in% colnames(data))) {
-    stop("Column 'category' (category of the event) is missing from 'data'",
-         call. = FALSE)
-  }
+  # if (!("category" %in% colnames(data))) {
+  #   stop("Column 'category' (category of the event) is missing from 'data'",
+  #        call. = FALSE)
+  # }
   
   if (!inherits(data$"from", "Date")) {
     data$"from" <- as.Date(data$"from", format = format)
@@ -148,12 +148,21 @@ filter_events <- function(data, year = format(Sys.Date(), "%Y"),
     dates <- dates[which(dates %in% calendar$"date")]
     
     if (length(dates) > 0) {
-      
-     events <- rbind(events,
-                     data.frame("event"    = data[i, "event"],
-                                "from"     = as.character(min(dates)),
-                                "to"       = as.character(max(dates)),
-                                "category" = data[i, "category"]))
+    
+      if ("category" %in% colnames(data)) {
+        
+        events <- rbind(events,
+                        data.frame("name"     = data[i, "name"],
+                                   "from"     = as.character(min(dates)),
+                                   "to"       = as.character(max(dates)),
+                                   "category" = data[i, "category"]))
+      } else {
+        
+        events <- rbind(events,
+                        data.frame("name"     = data[i, "name"],
+                                   "from"     = as.character(min(dates)),
+                                   "to"       = as.character(max(dates))))
+      }
     }
   }
   
@@ -162,7 +171,7 @@ filter_events <- function(data, year = format(Sys.Date(), "%Y"),
   
   if (nrow(events) > 0) {
 
-    events <- events[with(events, order(from, to, event)), ]
+    events <- events[with(events, order(from, to, name)), ]
     
     rownames(events) <- NULL
   }

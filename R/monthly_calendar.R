@@ -15,7 +15,7 @@
 #' @param title a `character` of length 1. The title of the calendar. Default is
 #'   `Month YYYY` (e.g. `April 2024`).
 #' 
-#' @param events an optional `data.frame` with the following columns: `event`,
+#' @param events an optional `data.frame` with the following columns: `name`,
 #'   the name of the event, `from`, the starting date of the event, `to`, the 
 #'   ending date of the event, and `category`, the category of the event.
 #' 
@@ -164,15 +164,15 @@ monthly_calendar <- function(year = format(Sys.Date(), "%Y"),
            call. = FALSE)
     }
     
-    if (!("event" %in% colnames(events))) {
-      stop("Column 'event' (name of the event) is missing from 'events'",
+    if (!("name" %in% colnames(events))) {
+      stop("Column 'name' (name of the event) is missing from 'events'",
            call. = FALSE)
     }
     
-    if (!("category" %in% colnames(events))) {
-      stop("Column 'category' (category of the event) is missing from 'events'",
-           call. = FALSE)
-    }
+    # if (!("category" %in% colnames(events))) {
+    #   stop("Column 'category' (category of the event) is missing from 'events'",
+    #        call. = FALSE)
+    # }
   }
   
   
@@ -201,11 +201,15 @@ monthly_calendar <- function(year = format(Sys.Date(), "%Y"),
       stop("Some colors in 'palette' don't have name", call. = FALSE)
     }
     
-    categories <- unique(events$"category")
-    
-    if (any(!(categories %in% names(palette)))) {
-      stop("Some event categories don't have color. Please check the ", 
-           "argument 'palette'", call. = FALSE)
+    if ("category" %in% colnames(events)) {
+      
+      categories <- unique(events$"category")
+      categories <- categories[!is.na(categories)]
+      
+      if (any(!(categories %in% names(palette)))) {
+        stop("Some event categories don't have color. Please check the ", 
+             "argument 'palette'", call. = FALSE)
+      } 
     }
   }
   

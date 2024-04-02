@@ -38,7 +38,7 @@ multiweek_events <- function(data, year, month, weekend) {
       days <- days[order(days$"from", decreasing = FALSE), ]
       
       if (nrow(days) > 1) {
-        days[-1, "event"] <- paste(days[-1, "event"], "(continued)")
+        days[-1, "name"] <- paste(days[-1, "name"], "(continued)")
       }
       
       events <- rbind(events, days)
@@ -46,7 +46,7 @@ multiweek_events <- function(data, year, month, weekend) {
     
     events$"n_days" <- (as.Date(events$"to") - as.Date(events$"from"))
     
-    events <- events[with(events, order(from, -n_days, event)), ]
+    events <- events[with(events, order(from, -n_days, name)), ]
     
     rownames(events) <- NULL
   }
