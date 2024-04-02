@@ -12,7 +12,7 @@ monthly_calendar(
   title = NULL,
   events = NULL,
   weekend = TRUE,
-  palette = "#990000",
+  palette = "#333333",
   lang = NULL,
   holidays = NULL,
   moon = FALSE,
@@ -35,7 +35,7 @@ Default is \code{calendar-YYYY-MM.pdf} (e.g. \verb{calendar-2024-04.pdf}).}
 \item{title}{a \code{character} of length 1. The title of the calendar. Default is
 \verb{Month YYYY} (e.g. \verb{April 2024}).}
 
-\item{events}{an optional \code{data.frame} with the following columns: \code{event},
+\item{events}{an optional \code{data.frame} with the following columns: \code{name},
 the name of the event, \code{from}, the starting date of the event, \code{to}, the
 ending date of the event, and \code{category}, the category of the event.}
 

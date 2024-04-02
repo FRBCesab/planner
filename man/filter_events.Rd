@@ -14,7 +14,7 @@ filter_events(
 }
 \arguments{
 \item{data}{a \code{data.frame} with at least the following columns: \code{from}, the
-start of the event, \code{to}, the end of the event, \code{event}, the name of the
+start of the event, \code{to}, the end of the event, \code{name}, the name of the
 event, and \code{category}, the category of the event (used for different
 colors).}
 

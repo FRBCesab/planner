@@ -24,8 +24,9 @@ check_events <- function(data) {
     }
     
     days <- unlist(lapply(1:nrow(data), function(i) {
-      as.character(seq(as.Date(data[i, "from"]), as.Date(data[i, "to"]), 
-                       by = "days"))
+      from <- data[i, "from"]
+      to   <- ifelse(is.na(data[i, "to"]), data[i, "from"], data[i, "to"])
+      as.character(seq(as.Date(from), as.Date(to), by = "days"))
     }))
     
     n_events_by_day <- table(days)

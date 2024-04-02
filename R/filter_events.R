@@ -110,11 +110,11 @@ filter_events <- function(data, year = format(Sys.Date(), "%Y"),
   }
   
   
-  if (any(is.na(data$"to"))) {
-    stop("Error in converting dates. Please use the argument 'format' to ", 
-         "specify the appropriate format. See '?strptime' for further ", 
-         "information", call. = FALSE)
-  }
+  # if (any(is.na(data$"to"))) {
+  #   stop("Error in converting dates. Please use the argument 'format' to ", 
+  #        "specify the appropriate format. See '?strptime' for further ", 
+  #        "information", call. = FALSE)
+  # }
   
   if (!is.character(format)) {
     stop("Argument 'format' must be a character", call. = FALSE)
@@ -143,25 +143,38 @@ filter_events <- function(data, year = format(Sys.Date(), "%Y"),
   
   for (i in 1:nrow(data)) {
     
-    dates <- seq(data[i, "from"], data[i, "to"], by = "days")
+    if (!is.na(data[i, "to"])) {
+      
+      dates <- seq(data[i, "from"], data[i, "to"], by = "days")  
+      case  <- "multi_day"
+      
+    } else {
+      
+      dates <- data[i, "from"]
+      case  <- "single_day"
+    }
+    
     
     dates <- dates[which(dates %in% calendar$"date")]
     
     if (length(dates) > 0) {
-    
+
+      from <- as.character(min(dates, na.rm = TRUE))
+      to   <- ifelse(case == "single_day", NA, as.character(max(dates)))
+      
       if ("category" %in% colnames(data)) {
         
         events <- rbind(events,
                         data.frame("name"     = data[i, "name"],
-                                   "from"     = as.character(min(dates)),
-                                   "to"       = as.character(max(dates)),
+                                   "from"     = from,
+                                   "to"       = to,
                                    "category" = data[i, "category"]))
       } else {
         
         events <- rbind(events,
                         data.frame("name"     = data[i, "name"],
-                                   "from"     = as.character(min(dates)),
-                                   "to"       = as.character(max(dates))))
+                                   "from"     = from,
+                                   "to"       = to))
       }
     }
   }

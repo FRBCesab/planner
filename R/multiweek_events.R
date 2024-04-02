@@ -16,10 +16,20 @@ multiweek_events <- function(data, year, month, weekend) {
     
     for (i in 1:nrow(data)) {
       
-      days <- data.frame("date" = as.character(seq(as.Date(data[i, "from"]), 
-                                                   as.Date(data[i, "to"]), 
-                                                   by = "days")))
+      case <- ifelse(is.na(data[i, "to"]), "single_day", "multi_day")
       
+      if (case == "single_day") {
+        
+        days <- data.frame("date" = as.character(seq(as.Date(data[i, "from"]), 
+                                                     as.Date(data[i, "from"]), 
+                                                     by = "days")))
+      } else {
+        
+        days <- data.frame("date" = as.character(seq(as.Date(data[i, "from"]), 
+                                                     as.Date(data[i, "to"]), 
+                                                     by = "days")))
+      }
+            
       days <- merge(days, calendar, by = "date", all = FALSE)
       
       dates <- tapply(days$"date", days$"y", function(x) {
@@ -41,10 +51,14 @@ multiweek_events <- function(data, year, month, weekend) {
         days[-1, "name"] <- paste(days[-1, "name"], "(continued)")
       }
       
+      days$"n_days" <- (as.Date(days$"to") - as.Date(days$"from"))
+      
+      if(case == "single_day") {
+        days$"to" <- NA 
+      }
+      
       events <- rbind(events, days)
     }
-    
-    events$"n_days" <- (as.Date(events$"to") - as.Date(events$"from"))
     
     events <- events[with(events, order(from, -n_days, name)), ]
     
