@@ -65,7 +65,8 @@
 <span>  palette <span class="op">=</span> <span class="st">"#990000"</span>,</span>
 <span>  lang <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  holidays <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  moon <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span>  moon <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  specials <span class="op">=</span> <span class="cn">NULL</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -132,6 +133,12 @@ the output of <code><a href="get_holidays.html">get_holidays()</a></code>. Defau
 <dt>moon</dt>
 <dd><p>a <code>logical</code>. If <code>TRUE</code> adds new/full moon glyph.
 Default is <code>FALSE</code>.</p></dd>
+
+
+<dt>specials</dt>
+<dd><p>an optional <code>data.frame</code> with the following columns: <code>date</code>,
+the date of the special day, and <code>name</code>, the name of the special day. These
+special days will be added at the top of the day box. Default is <code>NULL</code>.</p></dd>
 
 </dl></div>
     <div class="section level2">

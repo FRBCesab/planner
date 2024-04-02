@@ -3,7 +3,7 @@ pkgdown: 2.0.7
 pkgdown_sha: ~
 articles:
   calendar: calendar.html
-last_built: 2024-04-01T05:52Z
+last_built: 2024-04-02T11:17Z
 urls:
   reference: https://frbcesab.github.io/calendar/reference
   article: https://frbcesab.github.io/calendar/articles
