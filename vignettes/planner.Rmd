@@ -136,7 +136,7 @@ knitr::include_graphics("figures/calendar-demo-06.png")
 
 ### Adding events
 
-- Single-day events
+#### Single-day events
 
 ```{r 'get-single-day-events', eval=TRUE}
 events <- data.frame()
@@ -152,7 +152,7 @@ events <- rbind(events,
 events <- rbind(events,
                 data.frame("name" = "Single-day event 3",
                            "from" = "2024-04-02",
-                           "to"   = NA))
+                           "to"   = "2024-04-02"))
 events <- rbind(events,
                 data.frame("name" = "Single-day event 4",
                            "from" = "2024-04-02",
@@ -171,21 +171,207 @@ monthly_calendar(year     = 2024,
                  events   = events)
 ```
 
-```{r echo=FALSE, eval=TRUE, out.width="100%", fig.cap = "Monthly calendar - Special dates", fig.align='center'}
-# knitr::include_graphics("figures/calendar-demo-07.png")
+```{r echo=FALSE, eval=TRUE, out.width="100%", fig.cap = "Monthly calendar - Single-day events", fig.align='center'}
+knitr::include_graphics("figures/calendar-demo-07.png")
+```
+
+...
+
+
+```{r 'get-single-day-events-2', eval=TRUE}
+events <- rbind(events,
+                data.frame("name" = "Single-day event 5",
+                           "from" = "2024-04-03",
+                           "to"   = NA))
+events
+```
+
+```{r 'single-day-event-2'}
+monthly_calendar(year     = 2024, 
+                 month    = 4, 
+                 weekend  = FALSE,
+                 moon     = TRUE,
+                 holidays = holidays,
+                 specials = birthdays,
+                 events   = events)
+```
+
+```{r echo=FALSE, eval=TRUE, out.width="100%", fig.cap = "Monthly calendar - Single-day events (bis)", fig.align='center'}
+knitr::include_graphics("figures/calendar-demo-08.png")
 ```
 
 
 
-- Multi-day events
-- Multi-week events
+#### Multi-day events
+
+```{r 'get-multi-day-events', eval=TRUE}
+events <- data.frame()
+
+events <- rbind(events,
+                data.frame("name" = "Multi-day event 1",
+                           "from" = "2024-04-02",
+                           "to"   = "2024-04-03"))
+events <- rbind(events,
+                data.frame("name" = "Multi-day event 2",
+                           "from" = "2024-04-02",
+                           "to"   = "2024-04-05"))
+events <- rbind(events,
+                data.frame("name" = "Single-day event 1",
+                           "from" = "2024-04-02",
+                           "to"   = "2024-04-02"))
+events <- rbind(events,
+                data.frame("name" = "Single-day event 2",
+                           "from" = "2024-04-02",
+                           "to"   = "2024-04-02"))
+events <- rbind(events,
+                data.frame("name" = "Single-day event 3",
+                           "from" = "2024-04-03",
+                           "to"   = NA))
+events
+```
 
 
+```{r 'multi-day-event'}
+monthly_calendar(year     = 2024, 
+                 month    = 4, 
+                 weekend  = FALSE,
+                 moon     = TRUE,
+                 holidays = holidays,
+                 specials = birthdays,
+                 events   = events)
+```
 
+```{r echo=FALSE, eval=TRUE, out.width="100%", fig.cap = "Monthly calendar - Multi-day events", fig.align='center'}
+knitr::include_graphics("figures/calendar-demo-09.png")
+```
+
+
+#### Multi-week events
+
+
+```{r 'get-multi-week-events', eval=TRUE}
+events <- data.frame()
+
+events <- rbind(events,
+                data.frame("name" = "Multi-day event 1",
+                           "from" = "2024-04-02",
+                           "to"   = "2024-04-03"))
+events <- rbind(events,
+                data.frame("name" = "Multi-day event 2",
+                           "from" = "2024-04-02",
+                           "to"   = "2024-04-05"))
+events <- rbind(events,
+                data.frame("name" = "Single-day event 1",
+                           "from" = "2024-04-02",
+                           "to"   = "2024-04-02"))
+events <- rbind(events,
+                data.frame("name" = "Single-day event 2",
+                           "from" = "2024-04-02",
+                           "to"   = "2024-04-02"))
+events <- rbind(events,
+                data.frame("name" = "Single-day event 3",
+                           "from" = "2024-04-03",
+                           "to"   = NA))
+events <- rbind(events,
+                data.frame("name" = "Multi-week event 1",
+                           "from" = "2024-04-09",
+                           "to"   = "2024-04-23"))
+events
+```
+
+
+```{r 'multi-week-event'}
+monthly_calendar(year     = 2024, 
+                 month    = 4, 
+                 weekend  = FALSE,
+                 moon     = TRUE,
+                 holidays = holidays,
+                 specials = birthdays,
+                 events   = events)
+```
+
+```{r echo=FALSE, eval=TRUE, out.width="100%", fig.cap = "Monthly calendar - Multi-week events", fig.align='center'}
+knitr::include_graphics("figures/calendar-demo-10.png")
+```
 
 
 ### Colors
 
+
+```{r 'change-color'}
+monthly_calendar(year     = 2024, 
+                 month    = 4, 
+                 weekend  = FALSE,
+                 moon     = TRUE,
+                 holidays = holidays,
+                 specials = birthdays,
+                 events   = events,
+                 palette  = "#990000")
+```
+
+```{r echo=FALSE, eval=TRUE, out.width="100%", fig.cap = "Monthly calendar - Customize colors", fig.align='center'}
+knitr::include_graphics("figures/calendar-demo-11.png")
+```
+
+
+
+```{r 'category-argument', eval=TRUE}
+events <- data.frame()
+
+events <- rbind(events,
+                data.frame("name"     = "Multi-day event 1",
+                           "from"     = "2024-04-02",
+                           "to"       = "2024-04-03",
+                           "category" = "A"))
+events <- rbind(events,
+                data.frame("name"     = "Multi-day event 2",
+                           "from"     = "2024-04-02",
+                           "to"       = "2024-04-05",
+                           "category" = "B"))
+events <- rbind(events,
+                data.frame("name"     = "Single-day event 1",
+                           "from"     = "2024-04-02",
+                           "to"       = "2024-04-02",
+                           "category" = "A"))
+events <- rbind(events,
+                data.frame("name"     = "Single-day event 2",
+                           "from"     = "2024-04-02",
+                           "to"       = "2024-04-02",
+                           "category" = "A"))
+events <- rbind(events,
+                data.frame("name"     = "Single-day event 3",
+                           "from"     = "2024-04-03",
+                           "to"       = NA,
+                           "category" = "B"))
+events <- rbind(events,
+                data.frame("name"     = "Multi-week event 1",
+                           "from"     = "2024-04-09",
+                           "to"       = "2024-04-23",
+                           "category" = "C"))
+events
+```
+
+```{r 'change-color-2'}
+monthly_calendar(year     = 2024, 
+                 month    = 4, 
+                 weekend  = FALSE,
+                 moon     = TRUE,
+                 holidays = holidays,
+                 specials = birthdays,
+                 events   = events,
+                 palette  = c("A" = "#00356a",
+                              "B" = "#990000",
+                              "C" = "#a17900"))
+```
+
+```{r echo=FALSE, eval=TRUE, out.width="100%", fig.cap = "Monthly calendar - Customize colors (bis)", fig.align='center'}
+knitr::include_graphics("figures/calendar-demo-12.png")
+```
+
+
+### Calendar language
+
+
 ## Annual calendar
 
-Not yet implemented
+Not implemented yet...
