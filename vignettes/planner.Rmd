@@ -417,6 +417,29 @@ knitr::include_graphics("figures/calendar-demo-12.png")
 ### Calendar language
 
 
+```{r 'finnish'}
+monthly_calendar(year  = 2024, 
+                 month = 4, 
+                 lang  = "Finnish")
+```
+
+
+```{r echo=FALSE, eval=TRUE, out.width="100%", fig.cap = "Monthly calendar - Customize language (Finnish)", fig.align='center'}
+knitr::include_graphics("figures/calendar-demo-13.png")
+```
+
+
+```{r 'greek'}
+monthly_calendar(year  = 2024, 
+                 month = 4, 
+                 lang  = "Greek")
+```
+
+
+```{r echo=FALSE, eval=TRUE, out.width="100%", fig.cap = "Monthly calendar - Customize language (Greek)", fig.align='center'}
+knitr::include_graphics("figures/calendar-demo-14.png")
+```
+
 ## Annual calendar
 
 Not implemented yet...
