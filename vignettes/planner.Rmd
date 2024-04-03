@@ -68,11 +68,18 @@ knitr::include_graphics("figures/calendar-demo-03.png")
 
 ### Holidays
 
-```{r 'get-holidays', eval=TRUE}
+```{r 'get-holidays'}
 holidays <- get_holidays(year    = 2024, 
                          month   = 4, 
                          country = "UK")
 holidays
+#>         date                           name                 type
+#> 1 2024-04-01                  Easter Monday Common Local Holiday
+#> 2 2024-04-05 Laylatul Qadr (Night of Power)               Muslim
+#> 3 2024-04-10   Eid ul Fitr (Tentative Date)               Muslim
+#> 4 2024-04-22           Stephen Lawrence Day           Observance
+#> 5 2024-04-23          First day of Passover       Jewish Holiday
+#> 6 2024-04-30           Last day of Passover       Jewish Holiday
 ```
 
 ```{r 'holidays-1'}
@@ -89,12 +96,16 @@ knitr::include_graphics("figures/calendar-demo-04.png")
 
 
 
-```{r 'filter-holidays', eval=TRUE}
+```{r 'filter-holidays'}
 get_holiday_types(holidays)
+#> [1] "Common Local Holiday" "Jewish Holiday"       "Muslim"              
+#> [4] "Observance"
 
 holidays <- filter_holidays(data  = holidays, 
                             types = "Common Local Holiday")
 holidays
+#>         date          name                 type
+#> 1 2024-04-01 Easter Monday Common Local Holiday
 ```
 
 ```{r 'holidays-2'}
@@ -113,10 +124,13 @@ knitr::include_graphics("figures/calendar-demo-05.png")
 ### Special events
 
 
-```{r 'get-birthdays', eval=TRUE}
+```{r 'get-birthdays'}
 birthdays <- data.frame("date" = c("2024-04-11", "2024-04-17"),
                         "name" = c("John's birthday", "Jane's birthday"))
 birthdays
+#>         date            name
+#> 1 2024-04-11 John's birthday
+#> 2 2024-04-17 Jane's birthday
 ```
 
 
@@ -138,7 +152,7 @@ knitr::include_graphics("figures/calendar-demo-06.png")
 
 #### Single-day events
 
-```{r 'get-single-day-events', eval=TRUE}
+```{r 'get-single-day-events'}
 events <- data.frame()
 
 events <- rbind(events,
@@ -158,6 +172,11 @@ events <- rbind(events,
                            "from" = "2024-04-02",
                            "to"   = "2024-04-02"))
 events
+#>                 name       from         to
+#> 1 Single-day event 1 2024-04-02 2024-04-02
+#> 2 Single-day event 2 2024-04-02 2024-04-02
+#> 3 Single-day event 3 2024-04-02 2024-04-02
+#> 4 Single-day event 4 2024-04-02 2024-04-02
 ```
 
 
@@ -178,12 +197,18 @@ knitr::include_graphics("figures/calendar-demo-07.png")
 ...
 
 
-```{r 'get-single-day-events-2', eval=TRUE}
+```{r 'get-single-day-events-2'}
 events <- rbind(events,
                 data.frame("name" = "Single-day event 5",
                            "from" = "2024-04-03",
                            "to"   = NA))
 events
+#>                 name       from         to
+#> 1 Single-day event 1 2024-04-02 2024-04-02
+#> 2 Single-day event 2 2024-04-02 2024-04-02
+#> 3 Single-day event 3 2024-04-02 2024-04-02
+#> 4 Single-day event 4 2024-04-02 2024-04-02
+#> 5 Single-day event 5 2024-04-03       <NA>
 ```
 
 ```{r 'single-day-event-2'}
@@ -204,7 +229,7 @@ knitr::include_graphics("figures/calendar-demo-08.png")
 
 #### Multi-day events
 
-```{r 'get-multi-day-events', eval=TRUE}
+```{r 'get-multi-day-events'}
 events <- data.frame()
 
 events <- rbind(events,
@@ -228,6 +253,12 @@ events <- rbind(events,
                            "from" = "2024-04-03",
                            "to"   = NA))
 events
+#>                 name       from         to
+#> 1  Multi-day event 1 2024-04-02 2024-04-03
+#> 2  Multi-day event 2 2024-04-02 2024-04-05
+#> 3 Single-day event 1 2024-04-02 2024-04-02
+#> 4 Single-day event 2 2024-04-02 2024-04-02
+#> 5 Single-day event 3 2024-04-03       <NA>
 ```
 
 
@@ -249,7 +280,7 @@ knitr::include_graphics("figures/calendar-demo-09.png")
 #### Multi-week events
 
 
-```{r 'get-multi-week-events', eval=TRUE}
+```{r 'get-multi-week-events'}
 events <- data.frame()
 
 events <- rbind(events,
@@ -277,6 +308,13 @@ events <- rbind(events,
                            "from" = "2024-04-09",
                            "to"   = "2024-04-23"))
 events
+#>                 name       from         to
+#> 1  Multi-day event 1 2024-04-02 2024-04-03
+#> 2  Multi-day event 2 2024-04-02 2024-04-05
+#> 3 Single-day event 1 2024-04-02 2024-04-02
+#> 4 Single-day event 2 2024-04-02 2024-04-02
+#> 5 Single-day event 3 2024-04-03       <NA>
+#> 6 Multi-week event 1 2024-04-09 2024-04-23
 ```
 
 
@@ -315,7 +353,7 @@ knitr::include_graphics("figures/calendar-demo-11.png")
 
 
 
-```{r 'category-argument', eval=TRUE}
+```{r 'category-argument'}
 events <- data.frame()
 
 events <- rbind(events,
@@ -349,6 +387,13 @@ events <- rbind(events,
                            "to"       = "2024-04-23",
                            "category" = "C"))
 events
+#>                 name       from         to category
+#> 1  Multi-day event 1 2024-04-02 2024-04-03        A
+#> 2  Multi-day event 2 2024-04-02 2024-04-05        B
+#> 3 Single-day event 1 2024-04-02 2024-04-02        A
+#> 4 Single-day event 2 2024-04-02 2024-04-02        A
+#> 5 Single-day event 3 2024-04-03       <NA>        B
+#> 6 Multi-week event 1 2024-04-09 2024-04-23        C
 ```
 
 ```{r 'change-color-2'}
