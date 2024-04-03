@@ -4,10 +4,10 @@
 # -----------------------------------------------------------
  
 cff-version: 1.2.0
-message: 'To cite package "calendar" in publications use:'
+message: 'To cite package "planner" in publications use:'
 type: software
 license: GPL-2.0-or-later
-title: 'calendar: Create a Monthly Calendar with Events'
+title: 'planner: Create a Monthly Calendar with Events'
 version: 0.0.0.9000
 abstract: Plots and exports a monthly calendar as 'pdf'. Holidays (France only) are
   identified. User can easily add events (up to four by day) and choose between of
@@ -19,15 +19,14 @@ authors:
   orcid: https://orcid.org/0000-0002-5537-5294
 preferred-citation:
   type: manual
-  title: 'calendar: An R package to create a monthly calendar'
+  title: 'planner: An R package to create a monthly calendar'
   authors:
   - name: Casajus Nicolas
   year: '2024'
   notes: R package version 0.0.0.9000
-  url: https://github.com/frbcesab/calendar
-repository: https://CRAN.R-project.org/package=calendar
-repository-code: https://github.com/frbcesab/calendar
-url: https://github.com/frbcesab/calendar
+  url: https://github.com/frbcesab/planner/
+repository-code: https://github.com/frbcesab/planner
+url: https://github.com/frbcesab/planner
 contact:
 - family-names: Casajus
   given-names: Nicolas
@@ -66,6 +65,28 @@ references:
     email: hadley@posit.co
   year: '2024'
 - type: software
+  title: jpeg
+  abstract: 'jpeg: Read and write JPEG images'
+  notes: Imports
+  url: https://www.rforge.net/jpeg/
+  repository: https://CRAN.R-project.org/package=jpeg
+  authors:
+  - family-names: Urbanek
+    given-names: Simon
+    email: Simon.Urbanek@r-project.org
+  year: '2024'
+- type: software
+  title: png
+  abstract: 'png: Read and write PNG images'
+  notes: Imports
+  url: http://www.rforge.net/png/
+  repository: https://CRAN.R-project.org/package=png
+  authors:
+  - family-names: Urbanek
+    given-names: Simon
+    email: Simon.Urbanek@r-project.org
+  year: '2024'
+- type: software
   title: rvest
   abstract: 'rvest: Easily Harvest (Scrape) Web Pages'
   notes: Imports
@@ -78,6 +99,16 @@ references:
   year: '2024'
 - type: software
   title: tools
+  abstract: 'R: A Language and Environment for Statistical Computing'
+  notes: Imports
+  authors:
+  - name: R Core Team
+  institution:
+    name: R Foundation for Statistical Computing
+    address: Vienna, Austria
+  year: '2024'
+- type: software
+  title: utils
   abstract: 'R: A Language and Environment for Statistical Computing'
   notes: Imports
   authors:
