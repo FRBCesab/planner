@@ -1,0 +1,191 @@
+---
+title: "Get started"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Get started}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r include=FALSE}
+knitr::opts_chunk$set(collapse  = TRUE,
+                      echo      = TRUE,
+                      eval      = FALSE,
+                      comment   = "#>",
+                      out.width = "100%",
+                      dpi       = 96,
+                      fig.align = "center")
+```
+
+The R package `planner` is dedicated to create ready to print calendars. Calendars are saved as `pdf` files in the A4 paper format. User can add various information: holidays (several countries available), moon phases, custom events (single-day, multi-day and multi-week events), and special days (like birthdays, etc.). 
+
+This vignette shows how to customize calendars.
+
+First, let's import the package.
+
+```{r setup, eval=TRUE}
+library("planner")
+```
+
+## Monthly calendar
+
+```{r 'default-settings'}
+monthly_calendar(year  = 2024, 
+                 month = 4)
+```
+
+```{r echo=FALSE, eval=TRUE, out.width="100%", fig.cap = "Monthly calendar - Default settings", fig.align='center'}
+knitr::include_graphics("figures/calendar-demo-01.png")
+```
+
+
+### Working week
+
+```{r 'working-week'}
+monthly_calendar(year    = 2024, 
+                 month   = 4, 
+                 weekend = FALSE)
+```
+
+```{r echo=FALSE, eval=TRUE, out.width="100%", fig.cap = "Monthly calendar - Working weeks", fig.align='center'}
+knitr::include_graphics("figures/calendar-demo-02.png")
+```
+
+
+### Moon phases
+
+```{r 'moon-phases'}
+monthly_calendar(year    = 2024, 
+                 month   = 4, 
+                 weekend = FALSE, 
+                 moon    = TRUE)
+```
+
+```{r echo=FALSE, eval=TRUE, out.width="100%", fig.cap = "Monthly calendar - Moon phases", fig.align='center'}
+knitr::include_graphics("figures/calendar-demo-03.png")
+```
+
+
+### Holidays
+
+```{r 'get-holidays', eval=TRUE}
+holidays <- get_holidays(year    = 2024, 
+                         month   = 4, 
+                         country = "UK")
+holidays
+```
+
+```{r 'holidays-1'}
+monthly_calendar(year     = 2024, 
+                 month    = 4, 
+                 weekend  = FALSE, 
+                 moon     = TRUE,
+                 holidays = holidays)
+```
+
+```{r echo=FALSE, eval=TRUE, out.width="100%", fig.cap = "Monthly calendar - UK Holidays", fig.align='center'}
+knitr::include_graphics("figures/calendar-demo-04.png")
+```
+
+
+
+```{r 'filter-holidays', eval=TRUE}
+get_holiday_types(holidays)
+
+holidays <- filter_holidays(data  = holidays, 
+                            types = "Common Local Holiday")
+holidays
+```
+
+```{r 'holidays-2'}
+monthly_calendar(year     = 2024, 
+                 month    = 4, 
+                 weekend  = FALSE,
+                 moon     = TRUE,
+                 holidays = holidays)
+```
+
+
+```{r echo=FALSE, eval=TRUE, out.width="100%", fig.cap = "Monthly calendar - UK Holidays (filtered)", fig.align='center'}
+knitr::include_graphics("figures/calendar-demo-05.png")
+```
+
+### Special events
+
+
+```{r 'get-birthdays', eval=TRUE}
+birthdays <- data.frame("date" = c("2024-04-11", "2024-04-17"),
+                        "name" = c("John's birthday", "Jane's birthday"))
+birthdays
+```
+
+
+```{r 'birthdays'}
+monthly_calendar(year     = 2024, 
+                 month    = 4, 
+                 weekend  = FALSE,
+                 moon     = TRUE,
+                 holidays = holidays,
+                 specials = birthdays)
+```
+
+```{r echo=FALSE, eval=TRUE, out.width="100%", fig.cap = "Monthly calendar - Special dates", fig.align='center'}
+knitr::include_graphics("figures/calendar-demo-06.png")
+```
+
+
+### Adding events
+
+- Single-day events
+
+```{r 'get-single-day-events', eval=TRUE}
+events <- data.frame()
+
+events <- rbind(events,
+                data.frame("name" = "Single-day event 1",
+                           "from" = "2024-04-02",
+                           "to"   = "2024-04-02"))
+events <- rbind(events,
+                data.frame("name" = "Single-day event 2",
+                           "from" = "2024-04-02",
+                           "to"   = "2024-04-02"))
+events <- rbind(events,
+                data.frame("name" = "Single-day event 3",
+                           "from" = "2024-04-02",
+                           "to"   = NA))
+events <- rbind(events,
+                data.frame("name" = "Single-day event 4",
+                           "from" = "2024-04-02",
+                           "to"   = "2024-04-02"))
+events
+```
+
+
+```{r 'single-day-events'}
+monthly_calendar(year     = 2024, 
+                 month    = 4, 
+                 weekend  = FALSE,
+                 moon     = TRUE,
+                 holidays = holidays,
+                 specials = birthdays,
+                 events   = events)
+```
+
+```{r echo=FALSE, eval=TRUE, out.width="100%", fig.cap = "Monthly calendar - Special dates", fig.align='center'}
+# knitr::include_graphics("figures/calendar-demo-07.png")
+```
+
+
+
+- Multi-day events
+- Multi-week events
+
+
+
+
+
+### Colors
+
+## Annual calendar
+
+Not yet implemented

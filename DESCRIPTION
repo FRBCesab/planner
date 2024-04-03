@@ -1,4 +1,4 @@
-Package: calendar
+Package: planner
 Type: Package
 Title: Create a Monthly Calendar with Events
 Version: 0.0.0.9000
@@ -12,8 +12,8 @@ Description: Plots and exports a monthly calendar as 'pdf'. Holidays (France
     only) are identified. User can easily add events (up to four by day) and 
     choose between of a week of five days (working week) or a full week
     (weekend included).
-URL: https://github.com/frbcesab/calendar
-BugReports: https://github.com/frbcesab/calendar/issues
+URL: https://github.com/frbcesab/planner
+BugReports: https://github.com/frbcesab/planner/issues
 License: GPL (>= 2)
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)

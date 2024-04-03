@@ -18,7 +18,7 @@ p <- ggplot2::ggplot() +
 hexSticker::sticker(
   
   subplot   = p,
-  package   = "calendar",
+  package   = "planner",
   filename  = here::here("man", "figures", "logo.png"),
   dpi       = 600,
   
@@ -39,7 +39,7 @@ hexSticker::sticker(
   s_width   = 1.25,        # Subplot
   s_height  = 1.25,        # Subplot
   
-  url       = "https://frbcesab.github.io/calendar",
+  url       = "https://frbcesab.github.io/planner/",
   
   spotlight = TRUE,
   l_alpha   = 0.10,

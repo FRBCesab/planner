@@ -60,7 +60,7 @@ multiweek_events <- function(data, year, month, weekend) {
       events <- rbind(events, days)
     }
     
-    events <- events[with(events, order(from, -n_days, name)), ]
+    events <- events[with(events, order(from, -n_days, to, name)), ]
     
     rownames(events) <- NULL
   }

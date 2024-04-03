@@ -2,9 +2,9 @@ citHeader("To cite calendar in publications use:")
 
 bibentry(
   bibtype = "Manual",
-  title   = "calendar: {An} {R} package to create a monthly calendar",
+  title   = "planner: {An} {R} package to create a monthly calendar",
   author  = c(person("Casajus Nicolas")),
   year    = "2024",
   note    = "R package version 0.0.0.9000",
-  url     = "https://github.com/frbcesab/calendar"
+  url     = "https://github.com/frbcesab/planner/"
 )

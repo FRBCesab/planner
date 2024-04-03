@@ -1,6 +1,6 @@
-# Contributing to calendar
+# Contributing to planner
 
-First off, thanks for taking the time to contribute to `calendar`!
+First off, thanks for taking the time to contribute to `planner`!
 
 All types of contributions are encouraged and valued. See the 
 [Table of contents](#table-of-contents) for different ways to help and details 
@@ -25,7 +25,7 @@ maintainers and smooth out the experience for all involved.
 ## Code of conduct
 
 This project is released with a
-[Contributor Code of Conduct](https://github.com/ahasverus/calendar/blob/main/CODE_OF_CONDUCT.md).
+[Contributor Code of Conduct](https://github.com/frbcesab/planner/blob/main/CODE_OF_CONDUCT.md).
 By participating, you are expected to uphold this code. Please report 
 unacceptable behavior to <nicolas.casajus@fondationbiodiversite.fr>.
 
@@ -36,7 +36,7 @@ unacceptable behavior to <nicolas.casajus@fondationbiodiversite.fr>.
 We use the [Tidyverse style guide](https://style.tidyverse.org/) for writing R 
 code. Functions are documented with the 
 [roxygen2](https://roxygen2.r-lib.org/articles/roxygen2.html) syntax. 
-`calendar` uses the `lower_snake_case`.
+`planner` uses the `lower_snake_case`.
 
 
 
@@ -51,15 +51,15 @@ specification.
 ## Asking questions
 
 Before you ask a question, it is best to search for existing
-[Issues](https://github.com/ahasverus/calendar/issues) that might help 
+[Issues](https://github.com/frbcesab/planner/issues) that might help 
 you. In case you have found a suitable issue and still need clarification, you 
 can write your question in this issue.
 
 If you then still feel the need to ask a question and need clarification, we 
 recommend the following:
 
-- Open a new [Issue](https://github.com/ahasverus/calendar/issues/new).
-- Use the template [other_issue.md](https://github.com/ahasverus/calendar/blob/main/.github/ISSUE_TEMPLATE/other_issue.md).
+- Open a new [Issue](https://github.com/frbcesab/planner/issues/new).
+- Use the template [other_issue.md](https://github.com/frbcesab/planner/blob/main/.github/ISSUE_TEMPLATE/other_issue.md).
 - Provide as much context as you can about what you're running into.
 - Provide project and platform versions (paste the output of `sessionInfo()`).
 
@@ -78,21 +78,21 @@ information. Therefore, we ask you to investigate carefully, collect information
 and describe the issue in detail in your report. Please complete the following 
 steps in advance to help us fix any potential bug as fast as possible.
 
-- Make sure that you are using the latest version of `calendar`.
+- Make sure that you are using the latest version of `planner`.
 - Determine if your bug is really a bug and not an error on your side.
 - To see if other users have experienced (and potentially already solved) the 
 same issue you are having, check if there is not already a bug report existing 
-for your bug or error in the [bug tracker](https://github.com/ahasverus/calendar/issues?q=label%3Abug).
+for your bug or error in the [bug tracker](https://github.com/frbcesab/planner/issues?q=label%3Abug).
 
 
 
 ### How do I submit a bug report?
 
-We use [GitHub Issues](https://github.com/ahasverus/calendar/issues) to 
+We use [GitHub Issues](https://github.com/frbcesab/planner/issues) to 
 track bugs and errors. If you run into an issue with the project:
 
-- Open a new [Issue](https://github.com/ahasverus/calendar/issues/new).
-- Use the template [bug_report.md](https://github.com/ahasverus/calendar/blob/main/.github/ISSUE_TEMPLATE/bug_report.md).
+- Open a new [Issue](https://github.com/frbcesab/planner/issues/new).
+- Use the template [bug_report.md](https://github.com/frbcesab/planner/blob/main/.github/ISSUE_TEMPLATE/bug_report.md).
 - Explain the behavior you would expect and the actual behavior.
 - Please provide as much context as possible and describe the 
 *reproduction steps* that someone else can follow to recreate the issue on 
@@ -108,10 +108,10 @@ We will then take care of the issue as soon as possible.
 
 ### Before requesting a feature
 
-- Make sure that you are using the latest version of `calendar`.
-- Read the [documentation](https://github.com/ahasverus/calendar/)
+- Make sure that you are using the latest version of `planner`.
+- Read the [documentation](https://github.com/frbcesab/planner/)
 carefully and find out if the functionality is already covered.
-- Perform a [search](https://github.com/ahasverus/calendar/issues) to 
+- Perform a [search](https://github.com/frbcesab/planner/issues) to 
 see if this enhancement has already been suggested. If it has, add a comment to 
 the existing issue instead of opening a new one.
 
@@ -120,14 +120,14 @@ the existing issue instead of opening a new one.
 ### How do I submit a feature request?
 
 Feature requests are tracked as 
-[GitHub Issues](https://github.com/ahasverus/calendar/issues).
+[GitHub Issues](https://github.com/frbcesab/planner/issues).
 
-- Open a new [Issue](https://github.com/ahasverus/calendar/issues/new).
-- Use the template [feature_request.md](https://github.com/ahasverus/calendar/blob/main/.github/ISSUE_TEMPLATE/feature_request.md).
+- Open a new [Issue](https://github.com/frbcesab/planner/issues/new).
+- Use the template [feature_request.md](https://github.com/frbcesab/planner/blob/main/.github/ISSUE_TEMPLATE/feature_request.md).
 - Provide a clear and descriptive title for the issue to identify the suggestion.
 - Provide a step-by-step description of the suggested enhancement in as 
 many details as possible.
-- Explain why this enhancement would be useful to most `calendar` users.
+- Explain why this enhancement would be useful to most `planner` users.
 
 We will then take care of the issue as soon as possible.
 
@@ -153,7 +153,7 @@ by the name of your new branch).
 1. Make your contribution (see below for examples).
 1. Stage (`git add`) and commit (`git commit`) your changes as often as necessary
 1. Push your changes to GitHub w/ `git push origin branch-name`.
-3. Submit a [Pull Request](https://docs.github.com/en/get-started/quickstart/contributing-to-projects#making-a-pull-request) on the [original repo](https://github.com/ahasverus/calendar/compare).
+3. Submit a [Pull Request](https://docs.github.com/en/get-started/quickstart/contributing-to-projects#making-a-pull-request) on the [original repo](https://github.com/frbcesab/planner/compare).
 
 We will then review the PR as soon as possible.
 
