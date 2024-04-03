@@ -2,9 +2,9 @@ pandoc: 3.1.11
 pkgdown: 2.0.7
 pkgdown_sha: ~
 articles:
-  calendar: calendar.html
-last_built: 2024-04-02T21:26Z
+  planner: planner.html
+last_built: 2024-04-03T09:31Z
 urls:
-  reference: https://frbcesab.github.io/calendar/reference
-  article: https://frbcesab.github.io/calendar/articles
+  reference: https://frbcesab.github.io/planner/reference
+  article: https://frbcesab.github.io/planner/articles
 

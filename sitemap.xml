@@ -1,66 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://frbcesab.github.io/calendar/404.html</loc>
+    <loc>https://frbcesab.github.io/planner/404.html</loc>
   </url>
   <url>
-    <loc>https://frbcesab.github.io/calendar/CODE_OF_CONDUCT.html</loc>
+    <loc>https://frbcesab.github.io/planner/CODE_OF_CONDUCT.html</loc>
   </url>
   <url>
-    <loc>https://frbcesab.github.io/calendar/CONTRIBUTING.html</loc>
+    <loc>https://frbcesab.github.io/planner/CONTRIBUTING.html</loc>
   </url>
   <url>
-    <loc>https://frbcesab.github.io/calendar/LICENSE.html</loc>
+    <loc>https://frbcesab.github.io/planner/LICENSE.html</loc>
   </url>
   <url>
-    <loc>https://frbcesab.github.io/calendar/articles/calendar.html</loc>
+    <loc>https://frbcesab.github.io/planner/articles/index.html</loc>
   </url>
   <url>
-    <loc>https://frbcesab.github.io/calendar/articles/index.html</loc>
+    <loc>https://frbcesab.github.io/planner/articles/planner.html</loc>
   </url>
   <url>
-    <loc>https://frbcesab.github.io/calendar/authors.html</loc>
+    <loc>https://frbcesab.github.io/planner/authors.html</loc>
   </url>
   <url>
-    <loc>https://frbcesab.github.io/calendar/index.html</loc>
+    <loc>https://frbcesab.github.io/planner/index.html</loc>
   </url>
   <url>
-    <loc>https://frbcesab.github.io/calendar/news/index.html</loc>
+    <loc>https://frbcesab.github.io/planner/news/index.html</loc>
   </url>
   <url>
-    <loc>https://frbcesab.github.io/calendar/reference/calendar-package.html</loc>
+    <loc>https://frbcesab.github.io/planner/reference/filter_events.html</loc>
   </url>
   <url>
-    <loc>https://frbcesab.github.io/calendar/reference/filter_events.html</loc>
+    <loc>https://frbcesab.github.io/planner/reference/filter_holidays.html</loc>
   </url>
   <url>
-    <loc>https://frbcesab.github.io/calendar/reference/filter_holidays.html</loc>
+    <loc>https://frbcesab.github.io/planner/reference/get_calendar.html</loc>
   </url>
   <url>
-    <loc>https://frbcesab.github.io/calendar/reference/get_calendar.html</loc>
+    <loc>https://frbcesab.github.io/planner/reference/get_holiday_types.html</loc>
   </url>
   <url>
-    <loc>https://frbcesab.github.io/calendar/reference/get_holiday_types.html</loc>
+    <loc>https://frbcesab.github.io/planner/reference/get_holidays.html</loc>
   </url>
   <url>
-    <loc>https://frbcesab.github.io/calendar/reference/get_holidays.html</loc>
+    <loc>https://frbcesab.github.io/planner/reference/get_month_name.html</loc>
   </url>
   <url>
-    <loc>https://frbcesab.github.io/calendar/reference/get_month_name.html</loc>
+    <loc>https://frbcesab.github.io/planner/reference/get_moon_phases.html</loc>
   </url>
   <url>
-    <loc>https://frbcesab.github.io/calendar/reference/get_moon_phases.html</loc>
+    <loc>https://frbcesab.github.io/planner/reference/get_weekday_name.html</loc>
   </url>
   <url>
-    <loc>https://frbcesab.github.io/calendar/reference/get_weekday_name.html</loc>
+    <loc>https://frbcesab.github.io/planner/reference/index.html</loc>
   </url>
   <url>
-    <loc>https://frbcesab.github.io/calendar/reference/index.html</loc>
+    <loc>https://frbcesab.github.io/planner/reference/monthly_calendar.html</loc>
   </url>
   <url>
-    <loc>https://frbcesab.github.io/calendar/reference/monthly_calendar.html</loc>
+    <loc>https://frbcesab.github.io/planner/reference/number_of_days.html</loc>
   </url>
   <url>
-    <loc>https://frbcesab.github.io/calendar/reference/number_of_days.html</loc>
+    <loc>https://frbcesab.github.io/planner/reference/planner-package.html</loc>
   </url>
 </urlset>
