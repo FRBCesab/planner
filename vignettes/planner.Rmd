@@ -384,7 +384,7 @@ knitr::include_graphics("figures/calendar-demo-10.png")
 
 The **vertical order of events by day** follow these rules: events are ordered by duration (number of days by week), then by ending date (bullet-point events are added after boxed-events), and finally by event names.
 
-For readability purposes, **the number of events by day is limited to four**.
+For readability purposes, **the number of events by day is limited to four** (special days included).
 
 
 ### Colors
