@@ -2,7 +2,7 @@
   "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
   "@type": "SoftwareSourceCode",
   "identifier": "planner",
-  "description": "Plots and exports a monthly calendar as 'pdf'. Holidays (France only) are identified. User can easily add events (up to four by day) and choose between of a week of five days (working week) or a full week (weekend included).",
+  "description": "Creates annual, monthly, and weekly calendars as PDF files in the A4 paper format. Various information can be added: events, holidays, special days, moon phases, etc.",
   "name": "planner: Create Ready to Print Calendars",
   "codeRepository": "https://github.com/frbcesab/planner",
   "issueTracker": "https://github.com/frbcesab/planner/issues",
@@ -138,7 +138,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "1272.638KB",
+  "fileSize": "1272.626KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",

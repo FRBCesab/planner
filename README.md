@@ -5,6 +5,8 @@
 
 <!-- badges: start -->
 
+[![CRAN
+status](https://www.r-pkg.org/badges/version/planner)](https://CRAN.R-project.org/package=planner)
 [![R CMD
 Check](https://github.com/frbcesab/planner/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/frbcesab/planner/actions/workflows/R-CMD-check.yaml)
 [![Website](https://github.com/frbcesab/planner/actions/workflows/pkgdown.yaml/badge.svg)](https://github.com/frbcesab/planner/actions/workflows/pkgdown.yaml)

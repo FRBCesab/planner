@@ -8,7 +8,7 @@
 \description{
 \if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
-Plots and exports a monthly calendar as 'pdf'. Holidays (France only) are identified. User can easily add events (up to four by day) and choose between of a week of five days (working week) or a full week (weekend included).
+Creates annual, monthly, and weekly calendars as PDF files in the A4 paper format. Various information can be added: events, holidays, special days, moon phases, etc.
 }
 \seealso{
 Useful links:
