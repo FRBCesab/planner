@@ -7,8 +7,8 @@ cff-version: 1.2.0
 message: 'To cite package "planner" in publications use:'
 type: software
 license: GPL-2.0-or-later
-title: 'planner: Create a Monthly Calendar with Events'
-version: 0.0.0.9000
+title: 'planner: Create Ready to Print Calendars'
+version: '0.1'
 abstract: Plots and exports a monthly calendar as 'pdf'. Holidays (France only) are
   identified. User can easily add events (up to four by day) and choose between of
   a week of five days (working week) or a full week (weekend included).
@@ -19,11 +19,11 @@ authors:
   orcid: https://orcid.org/0000-0002-5537-5294
 preferred-citation:
   type: manual
-  title: 'planner: An R package to create a monthly calendar'
+  title: 'planner: An R package to create ready to print calendars'
   authors:
   - name: Casajus Nicolas
   year: '2024'
-  notes: R package version 0.0.0.9000
+  notes: R package version 0.1
   url: https://github.com/frbcesab/planner/
 repository-code: https://github.com/frbcesab/planner
 url: https://github.com/frbcesab/planner

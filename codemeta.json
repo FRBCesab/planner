@@ -7,7 +7,7 @@
   "codeRepository": "https://github.com/frbcesab/planner",
   "issueTracker": "https://github.com/frbcesab/planner/issues",
   "license": "https://spdx.org/licenses/GPL-2.0",
-  "version": "0.0.0.9000",
+  "version": "0.1",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -138,7 +138,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "1272.671KB",
+  "fileSize": "1272.638KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
@@ -151,7 +151,7 @@
       ],
       "name": "planner: {An} {R} package to create ready to print calendars",
       "url": "https://github.com/frbcesab/planner/",
-      "description": "R package version 0.0.0.9000"
+      "description": "R package version 0.1"
     }
   ],
   "releaseNotes": "https://github.com/frbcesab/planner/blob/master/NEWS.md",

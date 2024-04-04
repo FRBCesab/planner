@@ -78,7 +78,7 @@ vignette.
 Please cite `planner` as:
 
 > Casajus Nicolas (2024) planner: An R package to create ready to print
-> calendars. R package version 0.0.0.9000.
+> calendars. R package version 0.1.
 > <https://github.com/frbcesab/planner/>
 
 ## Contributing

@@ -1,1 +1,3 @@
-# planner 0.0.0.9000 (development version)
+# planner 0.1
+
+First release

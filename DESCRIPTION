@@ -1,7 +1,7 @@
 Package: planner
 Type: Package
 Title: Create Ready to Print Calendars
-Version: 0.0.0.9000
+Version: 0.1
 Authors@R: c(
     person(given   = "Nicolas",
            family  = "Casajus",
