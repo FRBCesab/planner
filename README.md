@@ -23,46 +23,28 @@ Check](https://github.com/frbcesab/planner/actions/workflows/R-CMD-check.yaml/ba
 
 ## Overview
 
-The R package `planner` is dedicated to create a monthly calendar. It
-plots and exports the calendar as a `pdf` file (ready to print in the A4
-paper format). Holidays (only France is supported yet) are identified
-and user can easily add events (up to four by day). User can also choose
-between of a week of five days (working week) or a full week (weekend
-included).
+The R package `planner` is dedicated to create ready to print calendars.
+Calendars are saved as PDF files in the A4 paper format (297 x 210 mm).
+Users can choose between a monthly or annual calendar. Many features are
+available:
 
-- **Empty monthly calendar (with weekends)**
+- choose between a full or working weeks calendar
+- add holidays (available for 200+ countries)
+- add special days (i.e. birthdays)
+- add moon phases
+- add single-day events
+- add multi-day events
+- add multi-week events
+- add sub-calendars (event categories)
+- change calendar language
 
-![](man/figures/calendar-demo-1.png)
-
-<br/>
-
-- **Empty monthly calendar (without weekend)**
-
-![](man/figures/calendar-demo-2.png)
-
-<br/>
-
-- **Monthly calendar with single-day events**
-
-![](man/figures/calendar-demo-3.png)
+![](vignettes/figures/calendar-demo-12.png)
 
 <br/>
 
-- **Monthly calendar with multi-day events**
-
-![](man/figures/calendar-demo-4.png)
+![](vignettes/figures/calendar-demo-14.png)
 
 <br/>
-
-- **Monthly calendar with multi-week events**
-
-![](man/figures/calendar-demo-5.png)
-
-<br/>
-
-- **All-in-one**
-
-![](man/figures/calendar-demo-6.png)
 
 ## Installation
 
