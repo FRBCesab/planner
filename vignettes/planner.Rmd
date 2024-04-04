@@ -17,7 +17,7 @@ knitr::opts_chunk$set(collapse  = TRUE,
                       fig.align = "center")
 ```
 
-The R package `planner` is dedicated to create ready to print calendars. Calendars are saved as `pdf` files in the A4 paper format. User can add various information: holidays (several countries available), moon phases, custom events (single-day, multi-day and multi-week events), and special days (like birthdays, etc.). 
+The R package `planner` is dedicated to create ready to print calendars. Calendars are saved as PDF files in the A4 paper format. User can add various information: holidays (several countries available), moon phases, custom events (single-day, multi-day and multi-week events), and special days (like birthdays, etc.). 
 
 This vignette shows how to customize calendars.
 
@@ -29,6 +29,9 @@ library("planner")
 
 ## Monthly calendar
 
+The function `monthly_calendar()` creates a monthly calendar. Two arguments are mandatory and must be set by the user: `year` and `month`.
+
+
 ```{r 'default-settings'}
 monthly_calendar(year  = 2024, 
                  month = 4)
@@ -38,8 +41,13 @@ monthly_calendar(year  = 2024,
 knitr::include_graphics("figures/calendar-demo-01.png")
 ```
 
+By default, the calendar is exported as `calendar-2024-04.pdf` in the current working directory. Use the argument `path` to change the destination and the argument `filename` to rename the PDF file.
+
+
 
 ### Working week
+
+If you want to remove Saturdays and Sundays, add `weekend = FALSE`. This will produce a calendar with working weeks.
 
 ```{r 'working-week'}
 monthly_calendar(year    = 2024, 
@@ -53,6 +61,8 @@ knitr::include_graphics("figures/calendar-demo-02.png")
 
 
 ### Moon phases
+
+You can add moon phases by setting the argument `moon` to `TRUE`. Only full moons (empty circles), new moons (black circles), first and third quarters are available. You need an Internet connection when using `moon = TRUE` to scrap the website <https://www.timeanddate.com/moon/phases/>.
 
 ```{r 'moon-phases'}
 monthly_calendar(year    = 2024, 
@@ -68,6 +78,8 @@ knitr::include_graphics("figures/calendar-demo-03.png")
 
 ### Holidays
 
+The function `get_holidays()` can be used to retrieve holidays for a specific country and for given year and month. This function also requires an Internet connection to scrap the website <https://www.timeanddate.com/holidays/>.
+
 ```{r 'get-holidays'}
 holidays <- get_holidays(year    = 2024, 
                          month   = 4, 
@@ -82,6 +94,8 @@ holidays
 #> 6 2024-04-30           Last day of Passover       Jewish Holiday
 ```
 
+The output contains different types of holidays (field `type`) which may vary by country. To add this information to the monthly calendar, use the argument `holidays`.
+
 ```{r 'holidays-1'}
 monthly_calendar(year     = 2024, 
                  month    = 4, 
@@ -94,19 +108,23 @@ monthly_calendar(year     = 2024,
 knitr::include_graphics("figures/calendar-demo-04.png")
 ```
 
+Note the position of holidays on the calendar and the background of cells: data pass to the argument `holidays` will always be added at the top of cells.
+
+<br />
+
+You can filter holidays by types with the function `filter_holidays()`.
 
 
 ```{r 'filter-holidays'}
-get_holiday_types(holidays)
-#> [1] "Common Local Holiday" "Jewish Holiday"       "Muslim"              
-#> [4] "Observance"
-
 holidays <- filter_holidays(data  = holidays, 
                             types = "Common Local Holiday")
 holidays
 #>         date          name                 type
 #> 1 2024-04-01 Easter Monday Common Local Holiday
 ```
+
+**Tip:** to get available types for the selected country, have a look at the function `get_holiday_types()`.
+
 
 ```{r 'holidays-2'}
 monthly_calendar(year     = 2024, 
@@ -121,8 +139,15 @@ monthly_calendar(year     = 2024,
 knitr::include_graphics("figures/calendar-demo-05.png")
 ```
 
+Note that you can create your own holidays (days off) and pass the `data.frame` to the `holidays` argument of the function `monthly_calendar()`. Only two columns are required: `date` and `name`.
+
+
+
 ### Special events
 
+You can also use the argument `specials` of the function `monthly_calendar()` to add _special days_, like birthdays. There will be added at the bottom of the cell (with a glyph).
+
+Let's create two special dates:
 
 ```{r 'get-birthdays'}
 birthdays <- data.frame("date" = c("2024-04-11", "2024-04-17"),
@@ -150,7 +175,22 @@ knitr::include_graphics("figures/calendar-demo-06.png")
 
 ### Adding events
 
+The package `planner` can deal with different calendar events:
+
+- single-day events
+- multi-day events
+- multi-week events
+
+To add these events to a monthly calendar you can use the argument `events` of the function `monthly_calendar()` that requires a `data.frame` with the following columns:
+
+- `name`: the name of the event,
+- `from`: the starting date of the event,
+- `to`: the ending date of the event.
+
+
 #### Single-day events
+
+Let's add single-day events. First, we will create four events for the April 2, 2024.
 
 ```{r 'get-single-day-events'}
 events <- data.frame()
@@ -179,6 +219,10 @@ events
 #> 4 Single-day event 4 2024-04-02 2024-04-02
 ```
 
+Of course, you can store your events in a file (CSV, Excel, etc.) and read it from R. You just need to name the columns according to the structure of the `events` object (as shown above).
+
+
+Let's add these events to the calendar with the argument `events`.
 
 ```{r 'single-day-events'}
 monthly_calendar(year     = 2024, 
@@ -194,10 +238,11 @@ monthly_calendar(year     = 2024,
 knitr::include_graphics("figures/calendar-demo-07.png")
 ```
 
-...
+You can omit the ending date for single-day events. In that case, the event will be displayed as a bullet point.
 
 
 ```{r 'get-single-day-events-2'}
+## Add a bullet point event ----
 events <- rbind(events,
                 data.frame("name" = "Single-day event 5",
                            "from" = "2024-04-03",
@@ -228,6 +273,8 @@ knitr::include_graphics("figures/calendar-demo-08.png")
 
 
 #### Multi-day events
+
+The logic is the same for multi-day events. Let's create new calendar events.
 
 ```{r 'get-multi-day-events'}
 events <- data.frame()
@@ -278,6 +325,8 @@ knitr::include_graphics("figures/calendar-demo-09.png")
 
 
 #### Multi-week events
+
+Multi-week events are also supported.
 
 
 ```{r 'get-multi-week-events'}
@@ -333,7 +382,14 @@ knitr::include_graphics("figures/calendar-demo-10.png")
 ```
 
 
+The **vertical order of events by day** follow these rules: events are ordered by duration (number of days by week), then by ending date (bullet-point events are added after boxed-events), and finally by event names.
+
+For readability purposes, **the number of events by day is limited to four**.
+
+
 ### Colors
+
+The argument `palette` of the `monthly_calendar()` allows you to change the color of events (box background and bullet point). By providing only **one color** all events will be colored the same way.
 
 
 ```{r 'change-color'}
@@ -351,9 +407,10 @@ monthly_calendar(year     = 2024,
 knitr::include_graphics("figures/calendar-demo-11.png")
 ```
 
-
+In `planner` it's possible to categorize events and to attribute a specific color to each category. First you need to add a new column, named `category`, in the `events` `data.frame`.
 
 ```{r 'category-argument'}
+## Events with category ----
 events <- data.frame()
 
 events <- rbind(events,
@@ -396,6 +453,8 @@ events
 #> 6 Multi-week event 1 2024-04-09 2024-04-23        C
 ```
 
+To associate a specific color to each event category, the argument `palette` must contain as many colors as there are event categories. Moreover, the `palette` argument must be a **named vector**, where names match event categories.
+
 ```{r 'change-color-2'}
 monthly_calendar(year     = 2024, 
                  month    = 4, 
@@ -416,6 +475,7 @@ knitr::include_graphics("figures/calendar-demo-12.png")
 
 ### Calendar language
 
+Finally, it's possible to change the language of the calendar (only day and month names are supported) with the argument `lang`. Not all languages are supported, and the rendering depends on your system encoding and OS.
 
 ```{r 'finnish'}
 monthly_calendar(year  = 2024, 
