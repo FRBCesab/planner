@@ -96,7 +96,7 @@ vignette.
 Please cite `planner` as: 
 
 > Casajus Nicolas (`r format(Sys.Date(), "%Y")`) planner: An R 
-package to create a monthly calendar. R package version 0.0.0.9000. 
+package to create ready to print calendars. R package version 0.0.0.9000. 
 <https://github.com/frbcesab/planner/>
 
 

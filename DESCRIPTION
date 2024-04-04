@@ -1,6 +1,6 @@
 Package: planner
 Type: Package
-Title: Create a Monthly Calendar with Events
+Title: Create Ready to Print Calendars
 Version: 0.0.0.9000
 Authors@R: c(
     person(given   = "Nicolas",

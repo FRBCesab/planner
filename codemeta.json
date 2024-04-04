@@ -3,7 +3,7 @@
   "@type": "SoftwareSourceCode",
   "identifier": "planner",
   "description": "Plots and exports a monthly calendar as 'pdf'. Holidays (France only) are identified. User can easily add events (up to four by day) and choose between of a week of five days (working week) or a full week (weekend included).",
-  "name": "planner: Create a Monthly Calendar with Events",
+  "name": "planner: Create Ready to Print Calendars",
   "codeRepository": "https://github.com/frbcesab/planner",
   "issueTracker": "https://github.com/frbcesab/planner/issues",
   "license": "https://spdx.org/licenses/GPL-2.0",
@@ -138,7 +138,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "1592.68KB",
+  "fileSize": "1272.671KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
@@ -149,11 +149,12 @@
           "name": "Casajus Nicolas"
         }
       ],
-      "name": "planner: {An} {R} package to create a monthly calendar",
+      "name": "planner: {An} {R} package to create ready to print calendars",
       "url": "https://github.com/frbcesab/planner/",
       "description": "R package version 0.0.0.9000"
     }
   ],
   "releaseNotes": "https://github.com/frbcesab/planner/blob/master/NEWS.md",
+  "readme": "https://github.com/FRBCesab/planner/blob/main/README.md",
   "contIntegration": ["https://github.com/frbcesab/planner/actions/workflows/R-CMD-check.yaml", "https://github.com/frbcesab/planner/actions/workflows/pkgdown.yaml"]
 }

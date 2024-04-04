@@ -4,7 +4,7 @@
 \name{planner-package}
 \alias{planner}
 \alias{planner-package}
-\title{planner: Create a Monthly Calendar with Events}
+\title{planner: Create Ready to Print Calendars}
 \description{
 \if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
