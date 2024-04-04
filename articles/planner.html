@@ -85,10 +85,10 @@
     
     
 <p>The R package <code>planner</code> is dedicated to create ready to
-print calendars. Calendars are saved as <code>pdf</code> files in the A4
-paper format. User can add various information: holidays (several
-countries available), moon phases, custom events (single-day, multi-day
-and multi-week events), and special days (like birthdays, etc.).</p>
+print calendars. Calendars are saved as PDF files in the A4 paper
+format. User can add various information: holidays (several countries
+available), moon phases, custom events (single-day, multi-day and
+multi-week events), and special days (like birthdays, etc.).</p>
 <p>This vignette shows how to customize calendars.</p>
 <p>First, let’s import the package.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
@@ -96,6 +96,9 @@ and multi-week events), and special days (like birthdays, etc.).</p>
 <div class="section level2">
 <h2 id="monthly-calendar">Monthly calendar<a class="anchor" aria-label="anchor" href="#monthly-calendar"></a>
 </h2>
+<p>The function <code><a href="../reference/monthly_calendar.html">monthly_calendar()</a></code> creates a monthly
+calendar. Two arguments are mandatory and must be set by the user:
+<code>year</code> and <code>month</code>.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/monthly_calendar.html">monthly_calendar</a></span><span class="op">(</span>year  <span class="op">=</span> <span class="fl">2024</span>, </span>
 <span>                 month <span class="op">=</span> <span class="fl">4</span><span class="op">)</span></span></code></pre></div>
@@ -104,9 +107,16 @@ and multi-week events), and special days (like birthdays, etc.).</p>
 Monthly calendar - Default settings
 </p>
 </div>
+<p>By default, the calendar is exported as
+<code>calendar-2024-04.pdf</code> in the current working directory. Use
+the argument <code>path</code> to change the destination and the
+argument <code>filename</code> to rename the PDF file.</p>
 <div class="section level3">
 <h3 id="working-week">Working week<a class="anchor" aria-label="anchor" href="#working-week"></a>
 </h3>
+<p>If you want to remove Saturdays and Sundays, add
+<code>weekend = FALSE</code>. This will produce a calendar with working
+weeks.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/monthly_calendar.html">monthly_calendar</a></span><span class="op">(</span>year    <span class="op">=</span> <span class="fl">2024</span>, </span>
 <span>                 month   <span class="op">=</span> <span class="fl">4</span>, </span>
@@ -120,6 +130,10 @@ Monthly calendar - Working weeks
 <div class="section level3">
 <h3 id="moon-phases">Moon phases<a class="anchor" aria-label="anchor" href="#moon-phases"></a>
 </h3>
+<p>You can add moon phases by setting the argument <code>moon</code> to
+<code>TRUE</code>. Only full moons (empty circles), new moons (black
+circles), first and third quarters are available. You need an Internet
+connection when using <code>moon = TRUE</code> to scrap the website <a href="https://www.timeanddate.com/moon/phases/" class="external-link uri">https://www.timeanddate.com/moon/phases/</a>.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/monthly_calendar.html">monthly_calendar</a></span><span class="op">(</span>year    <span class="op">=</span> <span class="fl">2024</span>, </span>
 <span>                 month   <span class="op">=</span> <span class="fl">4</span>, </span>
@@ -134,6 +148,9 @@ Monthly calendar - Moon phases
 <div class="section level3">
 <h3 id="holidays">Holidays<a class="anchor" aria-label="anchor" href="#holidays"></a>
 </h3>
+<p>The function <code><a href="../reference/get_holidays.html">get_holidays()</a></code> can be used to retrieve
+holidays for a specific country and for given year and month. This
+function also requires an Internet connection to scrap the website <a href="https://www.timeanddate.com/holidays/" class="external-link uri">https://www.timeanddate.com/holidays/</a>.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">holidays</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_holidays.html">get_holidays</a></span><span class="op">(</span>year    <span class="op">=</span> <span class="fl">2024</span>, </span>
 <span>                         month   <span class="op">=</span> <span class="fl">4</span>, </span>
@@ -146,6 +163,9 @@ Monthly calendar - Moon phases
 <span><span class="co">#&gt; 4 2024-04-22           Stephen Lawrence Day           Observance</span></span>
 <span><span class="co">#&gt; 5 2024-04-23          First day of Passover       Jewish Holiday</span></span>
 <span><span class="co">#&gt; 6 2024-04-30           Last day of Passover       Jewish Holiday</span></span></code></pre></div>
+<p>The output contains different types of holidays (field
+<code>type</code>) which may vary by country. To add this information to
+the monthly calendar, use the argument <code>holidays</code>.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/monthly_calendar.html">monthly_calendar</a></span><span class="op">(</span>year     <span class="op">=</span> <span class="fl">2024</span>, </span>
 <span>                 month    <span class="op">=</span> <span class="fl">4</span>, </span>
@@ -157,16 +177,21 @@ Monthly calendar - Moon phases
 Monthly calendar - UK Holidays
 </p>
 </div>
+<p>Note the position of holidays on the calendar and the background of
+cells: data pass to the argument <code>holidays</code> will always be
+added at the top of cells.</p>
+<p><br></p>
+<p>You can filter holidays by types with the function
+<code><a href="../reference/filter_holidays.html">filter_holidays()</a></code>.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/get_holiday_types.html">get_holiday_types</a></span><span class="op">(</span><span class="va">holidays</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "Common Local Holiday" "Jewish Holiday"       "Muslim"              </span></span>
-<span><span class="co">#&gt; [4] "Observance"</span></span>
-<span></span>
-<span><span class="va">holidays</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/filter_holidays.html">filter_holidays</a></span><span class="op">(</span>data  <span class="op">=</span> <span class="va">holidays</span>, </span>
+<code class="sourceCode R"><span><span class="va">holidays</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/filter_holidays.html">filter_holidays</a></span><span class="op">(</span>data  <span class="op">=</span> <span class="va">holidays</span>, </span>
 <span>                            types <span class="op">=</span> <span class="st">"Common Local Holiday"</span><span class="op">)</span></span>
 <span><span class="va">holidays</span></span>
 <span><span class="co">#&gt;         date          name                 type</span></span>
 <span><span class="co">#&gt; 1 2024-04-01 Easter Monday Common Local Holiday</span></span></code></pre></div>
+<p><strong>Tip:</strong> to get available types for the selected
+country, have a look at the function
+<code><a href="../reference/get_holiday_types.html">get_holiday_types()</a></code>.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/monthly_calendar.html">monthly_calendar</a></span><span class="op">(</span>year     <span class="op">=</span> <span class="fl">2024</span>, </span>
 <span>                 month    <span class="op">=</span> <span class="fl">4</span>, </span>
@@ -178,10 +203,19 @@ Monthly calendar - UK Holidays
 Monthly calendar - UK Holidays (filtered)
 </p>
 </div>
+<p>Note that you can create your own holidays (days off) and pass the
+<code>data.frame</code> to the <code>holidays</code> argument of the
+function <code><a href="../reference/monthly_calendar.html">monthly_calendar()</a></code>. Only two columns are required:
+<code>date</code> and <code>name</code>.</p>
 </div>
 <div class="section level3">
 <h3 id="special-events">Special events<a class="anchor" aria-label="anchor" href="#special-events"></a>
 </h3>
+<p>You can also use the argument <code>specials</code> of the function
+<code><a href="../reference/monthly_calendar.html">monthly_calendar()</a></code> to add <em>special days</em>, like
+birthdays. There will be added at the bottom of the cell (with a
+glyph).</p>
+<p>Let’s create two special dates:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">birthdays</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span><span class="st">"date"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"2024-04-11"</span>, <span class="st">"2024-04-17"</span><span class="op">)</span>,</span>
 <span>                        <span class="st">"name"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"John's birthday"</span>, <span class="st">"Jane's birthday"</span><span class="op">)</span><span class="op">)</span></span>
@@ -205,9 +239,29 @@ Monthly calendar - Special dates
 <div class="section level3">
 <h3 id="adding-events">Adding events<a class="anchor" aria-label="anchor" href="#adding-events"></a>
 </h3>
+<p>The package <code>planner</code> can deal with different calendar
+events:</p>
+<ul>
+<li>single-day events</li>
+<li>multi-day events</li>
+<li>multi-week events</li>
+</ul>
+<p>To add these events to a monthly calendar you can use the argument
+<code>events</code> of the function <code><a href="../reference/monthly_calendar.html">monthly_calendar()</a></code> that
+requires a <code>data.frame</code> with the following columns:</p>
+<ul>
+<li>
+<code>name</code>: the name of the event,</li>
+<li>
+<code>from</code>: the starting date of the event,</li>
+<li>
+<code>to</code>: the ending date of the event.</li>
+</ul>
 <div class="section level4">
 <h4 id="single-day-events">Single-day events<a class="anchor" aria-label="anchor" href="#single-day-events"></a>
 </h4>
+<p>Let’s add single-day events. First, we will create four events for
+the April 2, 2024.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">events</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
@@ -233,6 +287,11 @@ Monthly calendar - Special dates
 <span><span class="co">#&gt; 2 Single-day event 2 2024-04-02 2024-04-02</span></span>
 <span><span class="co">#&gt; 3 Single-day event 3 2024-04-02 2024-04-02</span></span>
 <span><span class="co">#&gt; 4 Single-day event 4 2024-04-02 2024-04-02</span></span></code></pre></div>
+<p>Of course, you can store your events in a file (CSV, Excel, etc.) and
+read it from R. You just need to name the columns according to the
+structure of the <code>events</code> object (as shown above).</p>
+<p>Let’s add these events to the calendar with the argument
+<code>events</code>.</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/monthly_calendar.html">monthly_calendar</a></span><span class="op">(</span>year     <span class="op">=</span> <span class="fl">2024</span>, </span>
 <span>                 month    <span class="op">=</span> <span class="fl">4</span>, </span>
@@ -246,9 +305,11 @@ Monthly calendar - Special dates
 Monthly calendar - Single-day events
 </p>
 </div>
-<p>…</p>
+<p>You can omit the ending date for single-day events. In that case, the
+event will be displayed as a bullet point.</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">events</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">rbind</a></span><span class="op">(</span><span class="va">events</span>,</span>
+<code class="sourceCode R"><span><span class="co">## Add a bullet point event ----</span></span>
+<span><span class="va">events</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">rbind</a></span><span class="op">(</span><span class="va">events</span>,</span>
 <span>                <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span><span class="st">"name"</span> <span class="op">=</span> <span class="st">"Single-day event 5"</span>,</span>
 <span>                           <span class="st">"from"</span> <span class="op">=</span> <span class="st">"2024-04-03"</span>,</span>
 <span>                           <span class="st">"to"</span>   <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span><span class="op">)</span></span>
@@ -276,6 +337,8 @@ Monthly calendar - Single-day events (bis)
 <div class="section level4">
 <h4 id="multi-day-events">Multi-day events<a class="anchor" aria-label="anchor" href="#multi-day-events"></a>
 </h4>
+<p>The logic is the same for multi-day events. Let’s create new calendar
+events.</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">events</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
@@ -323,6 +386,7 @@ Monthly calendar - Multi-day events
 <div class="section level4">
 <h4 id="multi-week-events">Multi-week events<a class="anchor" aria-label="anchor" href="#multi-week-events"></a>
 </h4>
+<p>Multi-week events are also supported.</p>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">events</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
@@ -371,11 +435,21 @@ Monthly calendar - Multi-day events
 Monthly calendar - Multi-week events
 </p>
 </div>
+<p>The <strong>vertical order of events by day</strong> follow these
+rules: events are ordered by duration (number of days by week), then by
+ending date (bullet-point events are added after boxed-events), and
+finally by event names.</p>
+<p>For readability purposes, <strong>the number of events by day is
+limited to four</strong>.</p>
 </div>
 </div>
 <div class="section level3">
 <h3 id="colors">Colors<a class="anchor" aria-label="anchor" href="#colors"></a>
 </h3>
+<p>The argument <code>palette</code> of the
+<code><a href="../reference/monthly_calendar.html">monthly_calendar()</a></code> allows you to change the color of events
+(box background and bullet point). By providing only <strong>one
+color</strong> all events will be colored the same way.</p>
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/monthly_calendar.html">monthly_calendar</a></span><span class="op">(</span>year     <span class="op">=</span> <span class="fl">2024</span>, </span>
 <span>                 month    <span class="op">=</span> <span class="fl">4</span>, </span>
@@ -390,8 +464,13 @@ Monthly calendar - Multi-week events
 Monthly calendar - Customize colors
 </p>
 </div>
+<p>In <code>planner</code> it’s possible to categorize events and to
+attribute a specific color to each category. First you need to add a new
+column, named <code>category</code>, in the <code>events</code>
+<code>data.frame</code>.</p>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">events</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="co">## Events with category ----</span></span>
+<span><span class="va">events</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">events</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">rbind</a></span><span class="op">(</span><span class="va">events</span>,</span>
 <span>                <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span><span class="st">"name"</span>     <span class="op">=</span> <span class="st">"Multi-day event 1"</span>,</span>
@@ -431,6 +510,10 @@ Monthly calendar - Customize colors
 <span><span class="co">#&gt; 4 Single-day event 2 2024-04-02 2024-04-02        A</span></span>
 <span><span class="co">#&gt; 5 Single-day event 3 2024-04-03       &lt;NA&gt;        B</span></span>
 <span><span class="co">#&gt; 6 Multi-week event 1 2024-04-09 2024-04-23        C</span></span></code></pre></div>
+<p>To associate a specific color to each event category, the argument
+<code>palette</code> must contain as many colors as there are event
+categories. Moreover, the <code>palette</code> argument must be a
+<strong>named vector</strong>, where names match event categories.</p>
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/monthly_calendar.html">monthly_calendar</a></span><span class="op">(</span>year     <span class="op">=</span> <span class="fl">2024</span>, </span>
 <span>                 month    <span class="op">=</span> <span class="fl">4</span>, </span>
@@ -451,6 +534,10 @@ Monthly calendar - Customize colors (bis)
 <div class="section level3">
 <h3 id="calendar-language">Calendar language<a class="anchor" aria-label="anchor" href="#calendar-language"></a>
 </h3>
+<p>Finally, it’s possible to change the language of the calendar (only
+day and month names are supported) with the argument <code>lang</code>.
+Not all languages are supported, and the rendering depends on your
+system encoding and OS.</p>
 <div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/monthly_calendar.html">monthly_calendar</a></span><span class="op">(</span>year  <span class="op">=</span> <span class="fl">2024</span>, </span>
 <span>                 month <span class="op">=</span> <span class="fl">4</span>, </span>
