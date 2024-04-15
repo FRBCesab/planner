@@ -470,7 +470,8 @@ monthly_calendar <- function(year = format(Sys.Date(), "%Y"),
       
       if (calendar[i, "date"] %in% specials$"date") {
 
-        add_image(file = "inst/images/special.png", 
+        add_image(file = system.file(file.path("images", "special.png"), 
+                                     package = "planner"), 
                   x    = calendar[i, "x"] - (.91 + x_at),
                   y    = calendar[i, "y"] - 0.90, 
                   size = 1)
@@ -509,7 +510,8 @@ monthly_calendar <- function(year = format(Sys.Date(), "%Y"),
       
       if (calendar[i, "date"] %in% moon_dates$"new_moon") {
 
-        add_image(file = "inst/images/new-moon.png", 
+        add_image(file = system.file(file.path("images", "new-moon.png"), 
+                                     package = "planner"), 
                   x    = calendar[i, "x"] - x_at,
                   y    = calendar[i, "y"] - 0.10,
                   size = 1)
@@ -524,7 +526,8 @@ monthly_calendar <- function(year = format(Sys.Date(), "%Y"),
       
       if (calendar[i, "date"] %in% moon_dates$"full_moon") {
         
-        add_image(file = "inst/images/full-moon.png", 
+        add_image(file = system.file(file.path("images", "full-moon.png"), 
+                                     package = "planner"), 
                   x    = calendar[i, "x"] - x_at,
                   y    = calendar[i, "y"] - 0.10,
                   size = 1)
@@ -539,7 +542,8 @@ monthly_calendar <- function(year = format(Sys.Date(), "%Y"),
       
       if (calendar[i, "date"] %in% moon_dates$"first_quarter") {
         
-        add_image(file = "inst/images/first-quarter.png", 
+        add_image(file = system.file(file.path("images", "first-quarter.png"), 
+                                     package = "planner"), 
                   x    = calendar[i, "x"] - x_at,
                   y    = calendar[i, "y"] - 0.10,
                   size = 1)
@@ -547,7 +551,8 @@ monthly_calendar <- function(year = format(Sys.Date(), "%Y"),
       
       if (calendar[i, "date"] %in% moon_dates$"third_quarter") {
         
-        add_image(file = "inst/images/third-quarter.png", 
+        add_image(file = system.file(file.path("images", "third-quarter.png"), 
+                                     package = "planner"), 
                   x    = calendar[i, "x"] - x_at,
                   y    = calendar[i, "y"] - 0.10,
                   size = 1)
