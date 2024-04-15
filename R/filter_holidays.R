@@ -51,10 +51,10 @@ filter_holidays <- function(data, types) {
     stop("Argument 'types' must be a character", call. = FALSE)
   }
   
-  if (any(!(types %in% data$"type"))) {
-    stop("Some holiday types in 'types' are missing from 'data'. Please use ",
-         "'get_holiday_types()'", call. = FALSE)
-  }
+  # if (any(!(types %in% data$"type"))) {
+  #   stop("Some holiday types in 'types' are missing from 'data'. Please use ",
+  #        "'get_holiday_types()'", call. = FALSE)
+  # }
   
   data <- data[data$"type" %in% types, ]
   rownames(data) <- NULL
